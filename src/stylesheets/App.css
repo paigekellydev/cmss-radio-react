@@ -1,0 +1,32 @@
+/* spotify styling */
+
+/* .genre-name {
+  font-size: 24px;
+    letter-spacing: -.04em;
+    line-height: 1.3em;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    padding: 16px;
+    position: absolute;
+}
+
+.genre-img {
+  bottom: 0;
+    -webkit-box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+    height: 100px;
+    position: absolute;
+    width: 100px;
+}
+
+.genre-card {
+  display: block;
+/* } */
+
+
+div.genre-menu {
+  display: flex;
+  flex-wrap: nowrap;
+  /* wrap: wrap; */
+    /* grid-template-columns: repeat(auto-fill,minmax(var(--minimumColumnWidth),1fr)); */
+}

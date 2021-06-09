@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import './stylesheets/App.css';
+import React, { Component } from 'react';
+import LoginPage from './containers/LoginPage'
+import Home from './containers/Home';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    username: "",
+    display: "login"
+  }
+
+  login = (event) => {
+    this.setState({username: event.target.username.value})
+    if (event.target.username.value.length > 0) {
+      this.setState({display: "home"})
+    }
+  }
+
+  display = () => {
+    if (this.state.display === "login") {
+      return <LoginPage state={this.state} login={this.login}/>
+    } else if (this.state.display === "home") {
+      return <Home state={this.state}/>
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+        </header>
+        {this.display()}
+      </div>
+    );
+  }
 }
 
 export default App;
+
