@@ -1,32 +1,174 @@
-/* spotify styling */
-
-/* .genre-name {
-  font-size: 24px;
-    letter-spacing: -.04em;
-    line-height: 1.3em;
-    max-width: 100%;
-    overflow-wrap: break-word;
-    padding: 16px;
-    position: absolute;
+/* body {
+    margin: 0;
+    padding: 0;
 }
 
-.genre-img {
-  bottom: 0;
-    -webkit-box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
-    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
-    height: 100px;
-    position: absolute;
-    width: 100px;
+body:before {
+    content: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('https://t3.ftcdn.net/jpg/03/54/01/56/360_F_354015600_Rri9EiEU4le3QxuBuDD0AFhqRbZpwHyE.webp');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 
-.genre-card {
-  display: block;
-/* } */
+.form {
+    width: 400px;
+    height: 600px;
+    background: blue;
+    margin:auto;
+    width: 680px;
+    background: #fff;
+    border-radius: 10px;
+    position: relative;
+
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: (-50%, -50%);
+    -o-transform: (-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 500px;
+    padding: 80px 40px;
+    background: rgba(0,0,0,0.6)
+}
+
+.form h2 {
+    margin: 0;
+    padding: 0 0 20px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.form p {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #fff;
+}
+
+.form input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form input[type-email], 
+.form input[type-password] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    height: 35px;
+    color: #fff;
+    font-size: 15px;
+}
+
+.form input[type-submit] {
+    height: 30px;
+    color: #fff;
+    font-size: 15px;
+    background: red;
+    cursor: pointer;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    margin-top: 15%;
+} */
 
 
-div.genre-menu {
-  display: flex;
-  flex-wrap: nowrap;
-  /* wrap: wrap; */
-    /* grid-template-columns: repeat(auto-fill,minmax(var(--minimumColumnWidth),1fr)); */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', sans-serif;
+    background: black;
+}
+body:before {
+	content: '';
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background-image: url(https://t3.ftcdn.net/jpg/03/54/01/56/360_F_354015600_Rri9EiEU4le3QxuBuDD0AFhqRbZpwHyE.webp);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	background-size: cover;
+	-webkit-filter: blur(10px);
+	-moz-filter: blur(10px);
+	filter: blur(10px);
+    pointer-events:none;
+}
+.form {
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 400px;
+	height: 350px;
+	padding: 80px 40px;
+	background: rgba(0, 0, 0, 0.5);
+}
+.avatar {
+	position: absolute;
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+	overflow: hidden;
+	top: calc(-9rem);
+	left: 7rem;
+}
+.form h2 {
+	margin: 0;
+	padding: 0 0 20px;
+	color: #fff;
+	text-align: center;
+	text-transform: uppercase;
+}
+.form p {
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	color: #fff;
+}
+.form input {
+	width: 100%;
+	margin-bottom: 20px;
+    margin-top:60px;
+}
+.form input[type=text], .form input[type=password] {
+	border: none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 18px;
+}
+.form input[type=submit] {
+	height: 30px;
+	color: #fff;
+	font-size: 15px;
+	background: red;
+	cursor: pointer;
+	border-radius: 25px;
+	border: none;
+	outline: none;
+	margin-top: 15%;
+}
+.form a {
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+}
+input[type=checkbox] {
+	width: 20%;
 }
