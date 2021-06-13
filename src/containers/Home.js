@@ -5,10 +5,10 @@ import NavBar from '../components/NavBar'
 import PlaylistMenu from '../components/PlaylistMenu'
 import OwnerDashboard from './OwnerDashboard'
 
-export default function Home(props) {
+export default function Home({user}) {
 
     const displayOwnerDashboard = () => {
-        if (props.state.user.authorized_user === true) {
+        if (user.authorized_user === true) {
             return <OwnerDashboard />
         }
     }

@@ -7,15 +7,19 @@ export default function PlaylistMenu() {
     const [playlists, setPlaylists] = useState([
         {
             name: "Workout",
+            id: 1,
         },
         {
             name: "Chill",
+            id: 2
         },
         {
             name: "Let's code",
+            id: 3
         },
         {
             name: "Weekend beats",
+            id: 4
         }
     ]);
 
@@ -28,7 +32,7 @@ export default function PlaylistMenu() {
     const displayPlaylistMenu = () => {
         return playlists.map((playlist) => {
             return (
-                <NavItem eventKey={playlist.name}>
+                <NavItem key={playlist.id}>
                     <NavIcon>
                         <i className="nav-icon" />
                     </NavIcon>

@@ -9,53 +9,29 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-
-// class App extends Component {
-
-//   state = {
-//     username: "",
-//     display: "login",
-//     user: {}
-//   }
-
-//   //  need to check if username exists
-//   login = (event) => {
-//     this.setState({username: event.target.username.value})
-//     if (event.target.username.value.length > 0) {
-//       this.setState({display: "home"})
-//     }
-//   }
-
-//   display = () => {
-//     if (this.state.display === "login") {
-//       return <LoginPage state={this.state} login={this.login}/>
-//     } else if (this.state.display === "home") {
-//       return <Home state={this.state}/>
-//     }
-//   }
-
-//   render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//         </header>
-//         {this.display()}
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
-
 import React from 'react'
-import LoginForm from './components/LoginForm';
 
 export default function App() {
   
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState({})
+  const [display, setDisplay] = useState('login')
   
   const handleLogin = () => setIsLoggedIn(true);
   const handleLogout = () => setIsLoggedIn(false);
+
+  const displayItems = () => {
+    if (isLoggedIn) {
+      return (
+        <>
+          <Home user={user}/>
+          <ProtectedUsersButton />
+        </>
+      )
+    } else {
+      return <LoginPage handleLogin={handleLogin}/>
+    }
+  }
 
   useEffect(() => {
     if(localStorage.token) {
@@ -68,8 +44,9 @@ export default function App() {
         .then(result => {
           if (result.error) {
             console.error(result.error)
+            // return error pop-up username does not exist component, would you like to sign up
           } else {
-            console.log(result)
+            setUser(result)
             handleLogin();
           }
         })
@@ -79,11 +56,7 @@ export default function App() {
   
   return (
     <div>
-      <LoginForm handleLogin={handleLogin}/>
-      {isLoggedIn
-        ? <ProtectedUsersButton />
-        : null
-      }
+      {displayItems()}
     </div>
   )
 }
