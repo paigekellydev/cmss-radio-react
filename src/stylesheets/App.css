@@ -1,89 +1,3 @@
-/* body {
-    margin: 0;
-    padding: 0;
-}
-
-body:before {
-    content: 0;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-image: url('https://t3.ftcdn.net/jpg/03/54/01/56/360_F_354015600_Rri9EiEU4le3QxuBuDD0AFhqRbZpwHyE.webp');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    background-size: cover;
-}
-
-.form {
-    width: 400px;
-    height: 600px;
-    background: blue;
-    margin:auto;
-    width: 680px;
-    background: #fff;
-    border-radius: 10px;
-    position: relative;
-
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: (-50%, -50%);
-    -o-transform: (-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 500px;
-    padding: 80px 40px;
-    background: rgba(0,0,0,0.6)
-}
-
-.form h2 {
-    margin: 0;
-    padding: 0 0 20px;
-    color: #fff;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.form p {
-    margin: 0;
-    padding: 0;
-    font-weight: bold;
-    color: #fff;
-}
-
-.form input {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.form input[type-email], 
-.form input[type-password] {
-    border: none;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    height: 35px;
-    color: #fff;
-    font-size: 15px;
-}
-
-.form input[type-submit] {
-    height: 30px;
-    color: #fff;
-    font-size: 15px;
-    background: red;
-    cursor: pointer;
-    border-radius: 25px;
-    border: none;
-    outline: none;
-    margin-top: 15%;
-} */
-
-
 body {
 	margin: 0;
 	padding: 0;
@@ -95,9 +9,9 @@ body:before {
 	position: fixed;
 	width: 100vw;
 	height: 100vh;
-	background-image: url(https://t3.ftcdn.net/jpg/03/54/01/56/360_F_354015600_Rri9EiEU4le3QxuBuDD0AFhqRbZpwHyE.webp);
+	/* background-image: url(https://t3.ftcdn.net/jpg/03/54/01/56/360_F_354015600_Rri9EiEU4le3QxuBuDD0AFhqRbZpwHyE.webp); */
 	background-position: center center;
-	background-repeat: no-repeat;
+	background-repeat: repeat;
 	background-attachment: fixed;
 	-webkit-background-size: cover;
 	background-size: cover;
@@ -106,16 +20,20 @@ body:before {
 	filter: blur(10px);
     pointer-events:none;
 }
+
 .form {
 	position: absolute;
 	top: 55%;
 	left: 50%;
+	padding: 20rem;
 	transform: translate(-50%, -50%);
 	width: 400px;
-	height: 350px;
+	height: 60%;
 	padding: 80px 40px;
-	background: rgba(0, 0, 0, 0.5);
+	background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(255,0, 0, 0.3));
+	border-radius: 5%;
 }
+
 .avatar {
 	position: absolute;
 	width: 250px;
@@ -127,7 +45,7 @@ body:before {
 }
 .form h2 {
 	margin: 0;
-	padding: 0 0 20px;
+	padding: 0 0 10px;
 	color: #fff;
 	text-align: center;
 	text-transform: uppercase;
@@ -140,8 +58,7 @@ body:before {
 }
 .form input {
 	width: 100%;
-	margin-bottom: 20px;
-    margin-top:60px;
+	margin-bottom: 40px;
 }
 .form input[type=text], .form input[type=password] {
 	border: none;
@@ -161,7 +78,7 @@ body:before {
 	border-radius: 25px;
 	border: none;
 	outline: none;
-	margin-top: 15%;
+	margin-top: 20px;
 }
 .form a {
 	color: #fff;
@@ -172,3 +89,31 @@ body:before {
 input[type=checkbox] {
 	width: 20%;
 }
+
+input[type=checkbox] {
+	width: 20%;
+}
+
+.genre-card {
+	justify-content: center;
+	display: flex;
+	height: 9em;
+	width: 12.5em;
+	margin: auto;
+	position: absolute;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 1rem;
+	overflow-wrap: break-word;
+}
+
+/* .genre-card h3 {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	position: relative;
+	top: 40%;
+	width: 90%;
+	font-size: 8vw;
+	color: #555;
+} */

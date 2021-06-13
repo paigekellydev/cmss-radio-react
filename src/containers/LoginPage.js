@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import AddGenreForm from '../components/AddGenreForm';
 import LoginForm from '../components/LoginForm';
-import LoginSignUp from '../components/LoginSignUp';
 import SignUpForm from '../components/SignUpForm';
 
 class LoginPage extends Component {
 
     state = {
-        display: "start"
+        display: "login"
     }
 
     selectLogin = () => {
@@ -18,17 +18,22 @@ class LoginPage extends Component {
     }
 
     displayForm = () => {
-        if (this.state.display === "start") {
+        if (this.state.display === "sign-up") {
             return (
-                <LoginSignUp
-                    selectLogin={this.selectLogin} 
+                <SignUpForm 
+                    state={this.props.state} 
+                    login={this.props.login}
+                    selectLogin={this.selectLogin}
+                    />
+                    ) 
+        } else if (this.state.display === "login") {
+            return (
+                <LoginForm 
+                    state={this.props.state} 
+                    login={this.props.login}
                     selectSignUp={this.selectSignUp}
                 />
             )
-        } else if (this.state.display === "sign-up") {
-            return <SignUpForm state={this.props.state} login={this.props.login}/> 
-        } else if (this.state.display === "login") {
-            return <LoginForm state={this.props.state} login={this.props.login}/>
         }
     }
 
@@ -36,6 +41,7 @@ class LoginPage extends Component {
         return (
             <div>
                 {this.displayForm()}
+                {/* <AddGenreForm /> */}
             </div>
         );
     }

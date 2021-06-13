@@ -7,9 +7,10 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@trendmicro/react-sidenav": "^0.5.0",
-    "node-sass": "^6.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-image-select": "^1.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "reactstrap": "^8.9.0",
     "web-vitals": "^1.0.1"
@@ -37,5 +38,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.14.5",
+    "node-sass": "^6.0.0",
+    "nodemon": "^2.0.7",
+    "sass-loader": "^10.2.0"
   }
 }
