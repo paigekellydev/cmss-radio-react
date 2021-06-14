@@ -3,7 +3,7 @@ import { Nav, NavItem, NavLink } from 'reactstrap';
 
 function NavBar(props) {
     const handleClick = (event) => {
-        props.handleLogout()
+        localStorage.clear()
     }
     return (
         <Nav>

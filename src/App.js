@@ -2,6 +2,7 @@ import './stylesheets/App.css';
 import React, { Component } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import PrivateRoute from './components/PrivateRoute';
+import PrivateAdminRoute from './components/PrivateAdminRoute';
 import HomePage from './pages/HomePage'
 import ProfilePage from './pages/ProfilePage'
 import AddGenreForm from './forms/AddGenreForm';
@@ -9,8 +10,7 @@ import AddArtistForm from './forms/AddArtistForm';
 import AddSongForm from './forms/AddSongForm';
 import LoginForm from './forms/LoginForm';
 import SignUpForm from './forms/SignUpForm';
-import LoginPage from './pages/LoginPage'
-import ProtectedUsersButton from './components/ProtectedUsersButton';
+// import ProtectedUsersButton from './components/ProtectedUsersButton';
 const baseUrl = 'http://cmss-radio-api.herokuapp.com/'
 
 export default class App extends Component {
@@ -88,9 +88,9 @@ export default class App extends Component {
             <PrivateRoute exact path='/' component={HomePage} user={this.state.user} />
             {/* <PrivateRoute path="/home" component={<HomePage user={user} handleLogout={handleLogout}/>}/> */}
             <PrivateRoute exact path="/profile" component={ProfilePage} user={this.state.user} />
-            <PrivateRoute exact path="/add-genre" component={AddGenreForm} user={this.state.user} />
-            <PrivateRoute exact path="/add-artist" component={AddArtistForm} user={this.state.user} />
-            <PrivateRoute exact path="/add-song" component={AddSongForm} user={this.state.user} />
+            <PrivateAdminRoute exact path="/add-genre" component={AddGenreForm} user={this.state.user} />
+            <PrivateAdminRoute exact path="/add-artist" component={AddArtistForm} user={this.state.user} />
+            <PrivateAdminRoute exact path="/add-song" component={AddSongForm} user={this.state.user} />
           </Switch>
         </div>
       )
