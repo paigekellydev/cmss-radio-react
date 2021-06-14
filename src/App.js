@@ -1,62 +1,103 @@
 import './stylesheets/App.css';
-import { useState, useEffect } from 'react';
-import LoginPage from './containers/LoginPage'
-import Home from './containers/Home';
+import React, { Component } from 'react'
+import { Redirect, Route, Switch } from 'react-router-dom'
+import PrivateRoute from './components/PrivateRoute';
+import HomePage from './pages/HomePage'
+import ProfilePage from './pages/ProfilePage'
+import AddGenreForm from './forms/AddGenreForm';
+import AddArtistForm from './forms/AddArtistForm';
+import AddSongForm from './forms/AddSongForm';
+import LoginForm from './forms/LoginForm';
+import SignUpForm from './forms/SignUpForm';
+import LoginPage from './pages/LoginPage'
 import ProtectedUsersButton from './components/ProtectedUsersButton';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from 'react-router-dom'
-import React from 'react'
+const baseUrl = 'http://cmss-radio-api.herokuapp.com/'
 
-export default function App() {
+export default class App extends Component {
   
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState({})
-  const [display, setDisplay] = useState('login')
-  
-  const handleLogin = () => setIsLoggedIn(true);
-  const handleLogout = () => setIsLoggedIn(false);
-
-  const displayItems = () => {
-    if (isLoggedIn) {
-      return (
-        <>
-          <Home user={user}/>
-          <ProtectedUsersButton />
-        </>
-      )
-    } else {
-      return <LoginPage handleLogin={handleLogin}/>
-    }
+  state = {
+    user: {},
+    error: {}
   }
-
-  useEffect(() => {
-    if(localStorage.token) {
-      fetch('http://cmss-radio-api.herokuapp.com/profile', {
-        headers: {
-          Authorization: `Bearer ${localStorage.token}`
-        }
-      })
-        .then(response => response.json())
-        .then(result => {
-          if (result.error) {
-            console.error(result.error)
-            // return error pop-up username does not exist component, would you like to sign up
-          } else {
-            setUser(result)
-            handleLogin();
+  
+  login = (username, password, history) => {
+    fetch(baseUrl + 'login', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        {user: 
+          { 
+            username, 
+            password 
           }
         })
-    }
-  }, [])
+    })
+    .then(response => response.json())
+    .then(result => {
+      if (result.token) {
+        localStorage.setItem('token', result.token)
+        this.setState({user: result.user})
+        history.push('/')
+      } else {
+        this.setState({error: result.error})
+      }
+    })
+  }
   
-  
-  return (
-    <div>
-      {displayItems()}
-    </div>
-  )
+  signUp = (username, password, userEmail, firstName, lastName, authorized_user, history) => {
+    fetch(baseUrl + 'users', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      
+      body: JSON.stringify(
+        {user: 
+          { 
+            username: username, 
+            password: password, 
+            email: userEmail, 
+            first_name: firstName, 
+            last_name: lastName,  
+            authorized_user
+          }
+        }
+        )
+      })
+      .then(response => response.json())
+      .then(history.push('/login'))
+  }
+
+    render() {
+      return (
+        <div className="App">
+          {/* {displayItems()} */}
+          <Switch>
+            <Route 
+              path="/login" 
+              render={(routerProps) => <LoginForm {...routerProps} user={this.state.user} login={this.login}/>} 
+            />
+            <Route 
+              path="/sign-up" 
+              render={(routerProps) => <SignUpForm {...routerProps} user={this.state.user} signUp={this.signUp}/>} 
+            />
+            <PrivateRoute exact path='/' component={HomePage} user={this.state.user} />
+            {/* <PrivateRoute path="/home" component={<HomePage user={user} handleLogout={handleLogout}/>}/> */}
+            <PrivateRoute exact path="/profile" component={ProfilePage} user={this.state.user} />
+            <PrivateRoute exact path="/add-genre" component={AddGenreForm} user={this.state.user} />
+            <PrivateRoute exact path="/add-artist" component={AddArtistForm} user={this.state.user} />
+            <PrivateRoute exact path="/add-song" component={AddSongForm} user={this.state.user} />
+          </Switch>
+        </div>
+      )
+  }
 }
+
+
+
+
+

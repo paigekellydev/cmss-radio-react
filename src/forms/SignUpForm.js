@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function SignUpForm(props) {
 
@@ -12,36 +13,10 @@ export default function SignUpForm(props) {
     
     const handleSubmit = (event) => {
         event.preventDefault()
-        
-        fetch('https://cmss-radio-api.herokuapp.com/users', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
-            },
-            
-            body: JSON.stringify(
-                {user: 
-                    { 
-                        username, 
-                        password,
-                        email: userEmail, 
-                        first_name: firstName, 
-                        last_name: lastName,  
-                        authorized_user
-                    }
-                }
-            )
-        })
-        .then(response => response.json())
-        .then(newUser => console.log(newUser))
-        
-        // props.login(event)
+        props.signUp(username, password, userEmail, firstName, lastName, authorized_user, props.history)
+
     }
     
-    // const handleClick = (event) => {
-    //     props.selectLogin()
-    // }
 
     return (
         <div className="form">
@@ -83,7 +58,10 @@ export default function SignUpForm(props) {
                     onChange={e => setPassword(e.target.value)} 
                 />
                 <input type="submit" value="Sign Up"/>
-                {/* <a href='#' onClick={handleClick}>Have an account? Sign in here!</a> */}
+                <p>
+                    Have an account?
+                    <Link to="/login">Login</Link>
+                </p>
             </form>
         </div>
     )

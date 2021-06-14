@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import AddGenreForm from '../components/AddGenreForm'
-import AddSongForm from '../components/AddSongForm'
-import AddArtistForm from '../components/AddArtistForm'
+import AddGenreForm from '../forms/AddGenreForm'
+import AddSongForm from '../forms/AddSongForm'
+import AddArtistForm from '../forms/AddArtistForm'
 
 export default class OwnerDashboard extends Component {
 

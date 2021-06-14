@@ -1,23 +1,23 @@
 import React from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 
-function NavBar() {
+function NavBar(props) {
+    const handleClick = (event) => {
+        props.handleLogout()
+    }
     return (
         <Nav>
             <NavItem>
-                <NavLink href="#">Home</NavLink>
+                <NavLink href="/">Home</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href="#">Playlists</NavLink>
+                <NavLink href="/playlists">Playlists</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href="#">Profile</NavLink>
+                <NavLink href="/profile">Profile</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink href="#">Upload Song</NavLink>
-            </NavItem>
-            <NavItem>
-                <NavLink href="#">Logout</NavLink>
+                <NavLink href="/login" onClick={handleClick}>Logout</NavLink>
             </NavItem>
         </Nav>
     )

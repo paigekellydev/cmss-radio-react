@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap'
-import GenreCard from './GenreCard'
+import GenreCard from '../components/GenreCard'
 
 export default function GenreMenu() {
-
     const [genres, setGenres] = useState([
         {
             name: "Pop",

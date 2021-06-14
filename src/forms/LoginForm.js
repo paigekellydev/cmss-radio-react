@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import AddGenreForm from './AddGenreForm'
+import { Link } from 'react-router-dom'
 
 export default function LoginForm(props) {
     const [username, setUsername] = useState('')
@@ -7,25 +8,8 @@ export default function LoginForm(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-
-        fetch('http://cmss-radio-api.herokuapp.com/login', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({user: { username, password }})
-        })
-            .then(response => response.json())
-            .then(result => {
-                if (result.error) {
-                    console.error(result.error)
-                } else {
-                    localStorage.setItem('token', result.token);
-                    props.handleLogin()
-                }
-            })
-    } 
+        props.login(username, password, props.history)
+    }
 
     const handleClick = (event) => {
         props.selectSignUp()
@@ -50,7 +34,10 @@ export default function LoginForm(props) {
                     onChange={e => setPassword(e.target.value)} 
                 /><br></br>
                 <input className="submit-button" type="submit" value="Sign In"/>
-                <a href='#' onClick={handleClick}>Don't have an account? Sign up!</a>
+                <p>
+                    Don't have an account?
+                    <Link to="/sign-up">Sign Up</Link>
+                </p>
             </form>
         </div>
     );

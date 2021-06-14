@@ -6,7 +6,7 @@ function GenreCard(props) {
             className="genre-card" 
             style={{ backgroundImage: `url(${props.image})`}}
         >
-           {props.name}
+           {/* {props.name} */}
         </div>
         
     )

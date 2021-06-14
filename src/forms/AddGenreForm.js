@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import GenreCard from './GenreCard'
+import GenreCard from '../components/GenreCard'
 
 export default function AddGenreForm(props) {
 
