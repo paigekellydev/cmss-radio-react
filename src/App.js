@@ -37,6 +37,7 @@ export default class App extends Component {
     })
     .then(response => response.json())
     .then(result => {
+      console.log(result)
       if (result.token) {
         localStorage.setItem('token', result.token)
         this.setState({user: result.user})
@@ -86,7 +87,6 @@ export default class App extends Component {
               render={(routerProps) => <SignUpForm {...routerProps} user={this.state.user} signUp={this.signUp}/>} 
             />
             <PrivateRoute exact path='/' component={HomePage} user={this.state.user} />
-            {/* <PrivateRoute path="/home" component={<HomePage user={user} handleLogout={handleLogout}/>}/> */}
             <PrivateRoute exact path="/profile" component={ProfilePage} user={this.state.user} />
             <PrivateAdminRoute exact path="/add-genre" component={AddGenreForm} user={this.state.user} />
             <PrivateAdminRoute exact path="/add-artist" component={AddArtistForm} user={this.state.user} />
