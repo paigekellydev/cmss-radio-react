@@ -37,9 +37,11 @@ export default class App extends Component {
     })
     .then(response => response.json())
     .then(result => {
-      console.log(result)
       if (result.token) {
         localStorage.setItem('token', result.token)
+        localStorage.setItem('first_name', result.user.first_name)
+        localStorage.setItem('last_name', result.user.last_name)
+        localStorage.setItem('authorized_user', result.user.authorized_user)
         this.setState({user: result.user})
         history.push('/')
       } else {

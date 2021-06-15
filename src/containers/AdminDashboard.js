@@ -24,10 +24,11 @@ export default class OwnerDashboard extends Component {
     }
     render() {
         return (
-            <div>
-               <button onClick={this.handleClick}>Add Genre</button> 
-               <button onClick={this.handleClick}>Add Artist</button> 
-               <button onClick={this.handleClick}>Add Song</button>
+            <div className="admin-dashboard">
+                <h2>Administrative Dashboard</h2>
+               <button className="add-button" onClick={this.handleClick}>Add Genre</button> 
+               <button className="add-button" onClick={this.handleClick}>Add Artist</button> 
+               <button className="add-button" onClick={this.handleClick}>Add Song</button>
                <div>
                    {this.displayItems()}
                </div>

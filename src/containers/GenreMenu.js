@@ -20,15 +20,15 @@ export default function GenreMenu() {
     //         .then(genres => setGenres(genres))
     // })
 
-    // const displayGenres = () => {
-    //     return genres.map((genre) => {
-    //         return <GenreCard key={genre.id} genre={genre} />
-    //     } )
-    // }
+    const displayGenres = () => {
+        return genres.map((genre) => {
+            return <GenreCard key={genre.id} genre={genre} />
+        } )
+    }
 
     return (
         <div className="genre-menu">
-            {/* {displayGenres()} */}
+            {displayGenres()}
         </div>
     )
 }

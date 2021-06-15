@@ -3,23 +3,25 @@ import AddGenreForm from '../forms/AddGenreForm'
 import GenreMenu from '../containers/GenreMenu'
 import NavBar from '../components/NavBar'
 import PlaylistMenu from '../containers/PlaylistMenu'
-import OwnerDashboard from '../containers/OwnerDashboard'
+import AdminDashboard from '../containers/AdminDashboard'
 import ProtectedUsersButton from '../components/ProtectedUsersButton'
 
 export default function Home(props) {
 
-    // const displayOwnerDashboard = () => {
-    //     if (props.user.authorized_user === true) {
-    //         return <OwnerDashboard />
-    //     }
-    // }
+    const displayAdminDashboard = () => {
+        if (localStorage.authorized_user === true) {
+            return <AdminDashboard />
+        } else {
+            return null
+        }
+    }
 
-    // const handleClick = (event) => {
-    //     props.history.push('/profile')
-    // }
+    const handleClick = (event) => {
+        props.history.push('/profile')
+    }
 
     const displayUsers = () => {
-        console.log(props)
+        console.log(props.user)
         // if (props.user.authorized_user) {
         //     return <ProtectedUsersButton />
         // } else {
@@ -28,12 +30,17 @@ export default function Home(props) {
     }
     return (
         <div>
-            <h1>Home Page</h1>
-            <NavBar handleLogout={props.handleLogout}/>
+            <header>
+                <h1>CMSS Radio</h1>
+                <img className="logo" src="https://i.imgur.com/ey6gFFK.png" alt="" />
+            </header>
+            <NavBar authorized={props.user.authorized_user} handleLogout={props.handleLogout} name={`${props.user.first_name} ${props.user.last_name}`}/>
             <GenreMenu />
-            <PlaylistMenu />
-            <ProtectedUsersButton />
-            {displayUsers()}
+            {/* {displayUsers()} */}
+            {/* <PlaylistMenu /> */}
+            {/* <ProtectedUsersButton /> */}
+            {/* <AdminDashboard /> */}
+            {displayAdminDashboard()}
             {/* <AddGenreForm /> */}
             {/* {displayOwnerDashboard()} */}
             {/* <button onClick={handleClick}>View Profile</button> */}

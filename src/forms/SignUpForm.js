@@ -9,6 +9,7 @@ export default function SignUpForm(props) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [authorized_user, setAuthorizedUser] = useState('false')
+    const [emailList, setEmailList] = useState('false')
 
     
     const handleSubmit = (event) => {
@@ -17,11 +18,15 @@ export default function SignUpForm(props) {
 
     }
     
+    const handleInputChange = (event) => {
+        setEmailList(true)
+        const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    }
 
     return (
         <div className="form">
-            <img alt="" className="avatar" src="https://i.imgur.com/ejqejgu.png"></img>
-            {/* <h2>Sign Up</h2> */}
+            {/* <img alt="" className="avatar" src="https://i.imgur.com/ejqejgu.png"></img> */}
+            <h2>Sign Up</h2>
             <form onSubmit={handleSubmit}>
                 <input 
                     value={firstName}
@@ -33,7 +38,7 @@ export default function SignUpForm(props) {
                 <input 
                     value={lastName}
                     placeholder="Last name"
-                    name="username"
+                    name="last_name"
                     type="text"
                     onChange={e => setLastName(e.target.value)} 
                 />
@@ -46,7 +51,7 @@ export default function SignUpForm(props) {
                 />
                 <input 
                     value={username}
-                    placeholder="Enter desired username"
+                    placeholder="Username"
                     name="username"
                     type="text"
                     onChange={e => setUsername(e.target.value)} 
@@ -57,6 +62,15 @@ export default function SignUpForm(props) {
                     type="password"
                     onChange={e => setPassword(e.target.value)} 
                 />
+                <label name="email_list">
+                    Receive email updates from CMSS
+                    <input
+                        name="email_list"
+                        type="checkbox"
+                        checked={emailList}
+                        onChange={handleInputChange}
+                    />
+                </label>
                 <input type="submit" value="Sign Up"/>
                 <p>
                     Have an account?
