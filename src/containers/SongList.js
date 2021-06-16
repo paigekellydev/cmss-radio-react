@@ -5,7 +5,13 @@ export default function SongList() {
     const [songs, setSongs] = useState([]);
 
     useEffect(() => {
-        fetch('https://cmss-radio-api.herokuapp.com/songs')
+        fetch('http://localhost:3000/songs', {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`
+            }
+
+        })
             .then(resp => resp.json())
             .then(songs => setSongs(songs))
     })
@@ -14,6 +20,7 @@ export default function SongList() {
         return songs.map((song) => {
             return (
                 <div>
+                    <audio src='https://firebasestorage.googleapis.com/v0/b/cmss-radio.appspot.com/o/1.mp3?alt=media' controls ></audio>
                     <p>{song.title}</p>
                 </div>
             )

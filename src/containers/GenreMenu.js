@@ -6,7 +6,13 @@ export default function GenreMenu() {
     const [genres, setGenres] = useState([]);
 
     useEffect(() => {
-        fetch('https://cmss-radio-api.herokuapp.com/genres')
+        fetch('https://cmss-radio-api.herokuapp.com/genres', {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`
+            }
+            }
+        )
             .then(resp => resp.json())
             .then(genres => setGenres(genres))
     })

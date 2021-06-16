@@ -18,7 +18,7 @@ export default class Song extends Component  {
           {
             position: '1',
             songName: 'foo',
-            songUrl: 'https://firebasestorage.googleapis.com/v0/b/cmss-radio.appspot.com/o/LoFi%20FreQ%20-%20Compilation%20Vol.%201%20-%2017%20When%20the%20time%20is%20right.mp3?alt=media&token=42a81073-bad1-482b-9f4c-1e1100108efb'
+            songUrl: 'https://firebasestorage.googleapis.com/v0/b/cmss-radio.appspot.com/o/1.mp3?alt=media'
           }
         // ,
         //   {
