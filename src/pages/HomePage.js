@@ -5,11 +5,12 @@ import NavBar from '../components/NavBar'
 import PlaylistMenu from '../containers/PlaylistMenu'
 import AdminDashboard from '../containers/AdminDashboard'
 import ProtectedUsersButton from '../components/ProtectedUsersButton'
+import Song from '../components/Song'
 
 export default function Home(props) {
 
     const displayAdminDashboard = () => {
-        if (localStorage.authorized_user === true) {
+        if (props.user.authorized_user === true) {
             return <AdminDashboard />
         } else {
             return null
@@ -44,6 +45,7 @@ export default function Home(props) {
             {/* <AddGenreForm /> */}
             {/* {displayOwnerDashboard()} */}
             {/* <button onClick={handleClick}>View Profile</button> */}
+            <Song />
         </div>
     )
 }

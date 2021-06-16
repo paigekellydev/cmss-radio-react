@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import AddGenreForm from './AddGenreForm'
 import { Link } from 'react-router-dom'
+import Song from '../components/Song'
 
 export default function LoginForm(props) {
     const [username, setUsername] = useState('')
@@ -18,6 +19,7 @@ export default function LoginForm(props) {
     return (
         <div className="login-form, form">
             {/* <img alt="" className="avatar" src="https://i.imgur.com/ejqejgu.png"></img> */}
+            {/* <Song /> */}
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
                 <input 

@@ -5,8 +5,9 @@ function NavBar(props) {
     const handleClick = (event) => {
         localStorage.clear()
     }
-
+    
     const displayUsers = () => {
+        console.log(props)
         if (props.authorized === true) {
             return (
                 <li><img src="https://image.flaticon.com/icons/png/512/633/633781.png" alt=""/><a href="/users">View All Users</a></li>
@@ -18,7 +19,7 @@ function NavBar(props) {
         <div className="action">
             
             <div className="menu">
-                <h3>{localStorage.first_name + ' ' + localStorage.last_name}</h3>
+                {/* <h4>{props.user.firstName + ' ' + props.user.lastName}</h4> */}
                 <ul>
                     <li><img src="https://image.flaticon.com/icons/png/512/618/618631.png" alt=""/><a href="/profile">My Profile</a></li>
                     {displayUsers()}

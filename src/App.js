@@ -11,7 +11,7 @@ import AddSongForm from './forms/AddSongForm';
 import LoginForm from './forms/LoginForm';
 import SignUpForm from './forms/SignUpForm';
 // import ProtectedUsersButton from './components/ProtectedUsersButton';
-const baseUrl = 'https://cmss-radio-api.herokuapp.com/'
+const baseUrl = 'http://localhost:3000/'
 
 export default class App extends Component {
   
@@ -39,9 +39,9 @@ export default class App extends Component {
     .then(result => {
       if (result.token) {
         localStorage.setItem('token', result.token)
-        localStorage.setItem('first_name', result.user.first_name)
-        localStorage.setItem('last_name', result.user.last_name)
-        localStorage.setItem('authorized_user', result.user.authorized_user)
+        // localStorage.setItem('first_name', result.user.first_name)
+        // localStorage.setItem('last_name', result.user.last_name)
+        // localStorage.setItem('authorized_user', result.user.authorized_user)
         this.setState({user: result.user})
         history.push('/')
       } else {

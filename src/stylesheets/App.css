@@ -129,17 +129,29 @@ input[type=checkbox] {
 	width: 40%;
 }
 
-.genre-card {
-	justify-content: center;
+.genre-section {
 	display: flex;
-	height: 9em;
-	width: 12.5em;
+	/* justify-content: space-between; */
+	align-items: center;
+	align-content: center;
+	flex-wrap: wrap;
+	/* width: 70%; */
 	margin: auto;
-	position: absolute;
-	text-transform: uppercase;
-	text-align: center;
-	padding: 1rem;
-	overflow-wrap: break-word;
+	padding: 100px;
+	padding-top: 0;
+}
+
+.genre-card {
+	flex-direction: row;
+	margin: 5px;
+}
+
+.genre-card img {
+	height: 150px;
+	box-shadow: 2px 20px 100px black;
+	border-radius: 12px;
+	justify-content: center;
+	/* margin: auto; */
 }
 
 .action {
