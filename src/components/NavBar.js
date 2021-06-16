@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 
 function NavBar(props) {
@@ -19,6 +19,7 @@ function NavBar(props) {
         <div className="action">
             
             <div className="menu">
+                {/* <img src="https://image.flaticon.com/icons/png/512/618/618631.png" alt=""/><a href="/profile">{`${props.firstName} ${props.lastNake}`}</a> */}
                 {/* <h4>{props.user.firstName + ' ' + props.user.lastName}</h4> */}
                 <ul>
                     <li><img src="https://image.flaticon.com/icons/png/512/618/618631.png" alt=""/><a href="/profile">My Profile</a></li>

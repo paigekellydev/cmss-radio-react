@@ -21,7 +21,7 @@ export default function GenreMenu() {
 
     return (
         <div className="genre-menu">
-            <h1>Genre Menu</h1><br></br>
+            <h3>Genre Menu</h3><br></br>
             <section className="genre-section">
                 {displayGenres()}
             </section>
