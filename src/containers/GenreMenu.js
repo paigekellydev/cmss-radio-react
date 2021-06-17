@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap'
 import GenreCard from '../components/GenreCard'
 
-export default function GenreMenu() {
+export default function GenreMenu(props) {
     const [genres, setGenres] = useState([]);
 
     useEffect(() => {
@@ -17,10 +17,15 @@ export default function GenreMenu() {
             .then(genres => setGenres(genres))
     })
 
+    // const handleClick = (event) => {
+    //     console.log(event.target)
+    //     props.handleGenreClick(event, genre.id)
+    // }
+
     const displayGenres = () => {
         return genres.map((genre) => {
             if(genre.id !== 8) {
-                return <GenreCard key={genre.id} genre={genre} image={genre.img_url}/>
+                return <GenreCard handleGenreClick={props.handleGenreClick} key={genre.id} genre={genre} image={genre.img_url}/>
             }
         } )
     }
