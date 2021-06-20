@@ -12,7 +12,7 @@ const baseUrl = 'https://cmss-radio-api.herokuapp.com'
 export default function Home(props) {
 
     const [displayNavBar, setDisplayNavBar] = useState(false)
-    const [songList, setSongList] = useState(`${baseUrl}/songs`)
+    const [songListUrl, setSongListUrl] = useState('')
 
     const displayAdminDashboard = () => {
         if (props.user.authorized_user === true) {
@@ -46,11 +46,6 @@ export default function Home(props) {
         }
     }
 
-    const handleGenreClick = (event, genreId) => {
-        setSongList(`${baseUrl}/genres/${genreId}`)
-        localStorage.setItem('songList', songList)
-    }
-
     // const displayUsers = () => {
     //     console.log(props.user)
     //     // if (props.user.authorized_user) {
@@ -70,8 +65,8 @@ export default function Home(props) {
                 </span>
             </header>
             <section className="home">
-                <GenreMenu handleGenreClick={handleGenreClick}/>
-                <SongList songList={songList}/>
+                <GenreMenu />
+                <SongList />
             </section>
             {displayNav()}
             {displayAdminDashboard()}

@@ -1,55 +1,65 @@
 import React, { useState, useEffect } from 'react'
+import Song from '../components/Song';
 
 export default function SongList(props) {
 
     const [songs, setSongs] = useState([]);
+    const [songIndex, setSongIndex] = useState(0);
     const [song, setSong] = useState('');
+    const [songArray, setSongArray] = useState([])
+    const [isLoading, setLoading] = useState(false)
 
     useEffect(() => {
 
-        if (localStorage.songList === null || localStorage.songList === 'https://cmss-radio-api.herokuapp.com/songs') {
-            fetch(localStorage.songList, {
-                method: 'GET',
-                headers: {
-                    Authorization: `Bearer ${localStorage.token}`
+        // setTimeout(() => {
+
+        // })
+        fetch(localStorage.song_fetch_url, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`
+            }
+        })
+            .then(response => response.json())
+            .then(results => {
+                if (results.songs) {
+                    setSongs(results.songs)
+                } else {
+                    setSongs(results)
                 }
             })
-                .then(response => response.json())
-                .then(songs => setSongs(songs))
-            } else {
-                fetch(localStorage.songList, {
-                    method: 'GET',
-                    headers: {
-                        Authorization: `Bearer ${localStorage.token}`
-                    }
-                })
-                .then(response => response.json())
-                .then(genre => setSongs(genre.songs))
-            }
     })
 
-
-    const setSongUrl = (song) => {
-        return song
-    }
-
-    // const handleClick = (event, songUrl) => {
-    //     setSong(songUrl)
-    //     console.log(song)
-    // }
-
     const displaySongs = () => {
+        // const songArray = []
         return songs.map((song) => {
             const songUrl = song.song_url
-            // console.log(songUrl)
             return (
-                <li song={song} onClick={e => setSong(songUrl)}>
-                    {/* <audio src='https://firebasestorage.googleapis.com/v0/b/cmss-radio.appspot.com/o/1.mp3?alt=media' controls ></audio> */}
+                <li key={song.id} song={song} onClick={e => setSong(songUrl)}>
                     <p>{song.title}</p>
                 </li>
             )
-    
-        } )
+        })
+    }
+
+    const nextSong = (event) => {
+        if (songIndex === songs.length -1) {
+            setSongIndex(0)
+        } else {
+            setSongIndex(songIndex + 1)
+        }
+       setSong(songs[songIndex].song_url)
+    }
+
+    const previousSong = (event) => {
+        if (songIndex <= songs.length - 1 && songIndex !== 0) {
+            setSongIndex(songIndex - 1)
+        } else if (songIndex === 0) {
+            setSongIndex(songs.length - 1)
+        } else {
+            setSongIndex(0)
+        }
+       setSong(songs[songIndex].song_url)
     }
 
     return (
@@ -58,7 +68,15 @@ export default function SongList(props) {
             <ul>
                 {displaySongs()}
             </ul>
-            <audio src={song} controls></audio>
+            <figure>
+                <audio src={songs[songIndex].song_url} controls autoPlay>
+                </audio>
+                <button onClick={previousSong}>Previous</button>
+                <button onClick={nextSong}>Next</button>
+                {/* <button onClick={shuffleSongs}>Shuffle</button> */}
+                <button>Loop</button>
+            </figure>
+            {/* <Song songs={songs}/> */}
         </section>
     )
 }
