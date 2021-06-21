@@ -23,20 +23,20 @@ function NavBar(props) {
             <div className="menu">
                 <ul>
                     <li>
-                        <img src="https://image.flaticon.com/icons/png/512/618/618631.png" alt=""/>
+                        <img src="https://i.imgur.com/CEXJZby.png" alt=""/>
                         <a href="/profile">My Profile</a>
                     </li>
                     {displayUsers()}
                     <li>
-                        <img src="https://image.flaticon.com/icons/png/512/1159/1159633.png" alt=""/>
+                        <img src="https://i.imgur.com/uXKssFa.png" alt=""/>
                         <a href="/profile">Edit Profile</a>
                     </li>
                     <li>
-                        <img src="https://image.flaticon.com/icons/png/512/1159/1159633.png" alt=""/>
+                        <img src="https://i.imgur.com/o1lLeoo.png" alt=""/>
                         <a href="/profile">Discover Music</a>
                     </li>
                     <li>
-                        <img src="https://image.flaticon.com/icons/png/512/1250/1250678.png" alt=""/>
+                        <img src="https://i.imgur.com/5Luz861.png" alt=""/>
                         <a onClick={handleClick} href="/">Logout</a>
                     </li>
                 </ul>

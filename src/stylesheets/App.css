@@ -196,12 +196,30 @@ header span p {
 	cursor: pointer;
 }
 
+/* #audio-player {
+	background-color: blue;
+} */
+
+div.rhap_container, div.rhap_container *:focus {
+	outline: none;
+}
+
+div.rhap_container {
+	background-color: black;
+}
+
+
 .action .profile .img {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 50px;
 	height: 50px;
+}
+
+.icon {
+	width: 15px;
+	height: 15px;
 }
 
 /* .action img {
