@@ -6,8 +6,10 @@ export default function SongList(props) {
     const [songs, setSongs] = useState([]);
     const [songIndex, setSongIndex] = useState(0);
     const [song, setSong] = useState('');
+    const [songInfo, setSongInfo] = useState({});
     const [songArray, setSongArray] = useState([])
     const [isLoading, setLoading] = useState(false)
+    const [isPaused, setIsPaused] = useState(false)
 
     useEffect(() => {
 
@@ -30,13 +32,34 @@ export default function SongList(props) {
             })
     })
 
+    const playPauseButton = (songUrl) => {
+        if (songUrl !== song || isPaused === true ) {
+            return <button onClick={(event) => {
+                setIsPaused(false)
+                document.getElementById("audio").play()
+            } }>Play</button>
+        } else {
+            return <button onClick={(event) => {
+                // event.stopPropagation()
+                setIsPaused(true)
+                document.getElementById("audio").pause()
+            } }>Pause</button>
+        }
+    }
+
     const displaySongs = () => {
         // const songArray = []
         return songs.map((song) => {
             const songUrl = song.song_url
             return (
-                <li key={song.id} song={song} onClick={e => setSong(songUrl)}>
+                <li key={song.id}
+                    onClick={e => {
+                                setSong(songUrl);
+                                setSongInfo(song)
+                            }}>
                     <p>{song.title}</p>
+                    <button onClick={e => console.log('fav')}>❤️</button>
+                    {playPauseButton(songUrl)}
                 </li>
             )
         })
@@ -69,12 +92,13 @@ export default function SongList(props) {
                 {displaySongs()}
             </ul>
             <figure>
-                <audio src={songs[songIndex].song_url} controls autoPlay>
+                <figcaption></figcaption>
+                <audio id="audio" src={song} controls controlsList="nodownload" autoPlay>
                 </audio>
                 <button onClick={previousSong}>Previous</button>
                 <button onClick={nextSong}>Next</button>
                 {/* <button onClick={shuffleSongs}>Shuffle</button> */}
-                <button>Loop</button>
+                {/* <button>Loop</button> */}
             </figure>
             {/* <Song songs={songs}/> */}
         </section>

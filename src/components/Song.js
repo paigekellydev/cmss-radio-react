@@ -15,7 +15,7 @@ export default class Song extends Component  {
           {
             position: '1',
             songName: 'foo',
-            songUrl: 'https://firebasestorage.googleapis.com/v0/b/cmss-radio.appspot.com/o/1.mp3?alt=media'
+            songUrl: 'https://firebasestorage.googleapis.com/v0/b/cmss-radio.appspot.com/o/1.mp3?alt=media&token=a71e9224-b085-4f89-8eec-9384a48b27f7'
           }
         ],
         type: 'album'
