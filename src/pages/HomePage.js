@@ -8,16 +8,18 @@ const baseUrl = 'https://cmss-radio-api.herokuapp.com'
 
 export default function Home(props) {
 
-     const [songs, setSongs] = useState([]);
+    const [songs, setSongs] = useState([]);
     const [songIndex, setSongIndex] = useState(0);
     const [song, setSong] = useState('');
-    const [songInfo, setSongInfo] = useState({});
+    const [songInfo, setSongInfo] = useState({})
     // const [songArray, setSongArray] = useState([])
     const [isLoading, setLoading] = useState(false)
     const [isPaused, setIsPaused] = useState(false)
     const [displayFav, setDisplayFav] = useState(true)
     // const [currentFav, setFavSongs] = useState([])
     const [favSongs, setFavSongs] = useState([])
+    const [artist, setArtist] = useState({})
+    const [artistId, setArtistId] = useState(1)
 
     useEffect(() => {
         fetch(localStorage.song_fetch_url, {
@@ -35,6 +37,18 @@ export default function Home(props) {
                 }
             })
     })
+    useEffect(() => {
+        fetch(`https://cmss-radio-api.herokuapp.com/artists/${artistId}`, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`
+            }
+        }, [])
+            .then(response => response.json())
+            .then(results => {
+                setArtist(results.name)
+            })
+    }, [artistId])
 
     const handlePauseButton = (event, songUrl) => {
         if (isPaused === true ) {
@@ -51,7 +65,6 @@ export default function Home(props) {
         event.stopPropagation()
         if (event.target.src === "https://i.imgur.com/2GlG8J6.png") {
             event.target.src = "https://i.imgur.com/kRCB5ua.png"
-            console.log(songInfo)
         } else if (event.target.src === "https://i.imgur.com/kRCB5ua.png") {
             event.target.src = "https://i.imgur.com/2GlG8J6.png"
         }
@@ -60,15 +73,15 @@ export default function Home(props) {
     const displaySongs = () => {
         return songs.map((song) => {
             const songUrl = song.song_url
-            const songInfo = song
             return (
                 <li className="song-li"
                     key={song.id}
                     onClick={e => {
-                                setSong(songUrl);
-                                setSongInfo(songs[songIndex])
-                                document.getElementById(`clicked ${song.id}`).style.color = "#ff0000";
-                            }}>
+                        setSong(songUrl);
+                        setSongInfo(songs[songIndex])
+                        setArtistId(songInfo.artist_id)
+                        document.getElementById(`clicked ${song.id}`).style.color = "#ff0000";
+                    }}>
                     <span>
                         <img
                             className="icon"
@@ -131,7 +144,6 @@ export default function Home(props) {
     }
 
     const previousSong = (event) => {
-        console.log({songInfo})
         if (songIndex <= songs.length - 1 && songIndex !== 0) {
             setSongIndex(songIndex - 1)
         } else if (songIndex === 0) {
@@ -154,9 +166,9 @@ export default function Home(props) {
                 </section>
                 <GenreMenu />
             </div>
-            <div>
-                <p>{`Playing ${songInfo.title} by ${songInfo.artist}`}</p>
-            </div>
+            {/* <div>
+                <p>{`Playing ${songInfo.title} by ${artist}`}</p>
+            </div> */}
             <AudioPlayer
                 id="audio-player"
                 layout="stacked-reverse"
