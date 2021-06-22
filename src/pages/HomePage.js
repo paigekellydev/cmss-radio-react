@@ -3,6 +3,7 @@ import GenreMenu from '../containers/GenreMenu'
 import SongList from '../containers/SongList'
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
+import ProtectedUsersButton from '../components/ProtectedUsersButton';
 const baseUrl = 'https://cmss-radio-api.herokuapp.com'
 
 export default function Home(props) {
@@ -138,6 +139,7 @@ export default function Home(props) {
                 onClickPrevious={previousSong}
                 onClickNext={nextSong}
             />
+            <ProtectedUsersButton />
         </div>
     )
 }

@@ -72,63 +72,50 @@ export default function SongList(props) {
         }
     }
 
-    // const favImg = () => {
-    //     if (!displayFav) {
-    //         return (
-    //             <img 
-    //                 src="https://i.imgur.com/2GlG8J6.png" 
-    //                 alt="select as favorite"
-    //                 onClick={e => {
-    //                     e.target.src="https://i.imgur.com/kRCB5ua.png"} }
-    //             />)
-    //     } else {
-    //         return (
-    //             <img 
-    //                 src="https://i.imgur.com/kRCB5ua.png" 
-    //                 alt="deselect favorite"
-    //                 onClick={e => setDisplayFav(false)}
-    //             />)
-    //     }
-    // }
 
     const displaySongs = () => {
-        // const songArray = []
         return songs.map((song) => {
             const songUrl = song.song_url
             const songInfo = song
-            // console.log(song)s
             return (
                 <li key={song.id}
                     onClick={e => {
                                 setSong(songUrl);
                                 setSongInfo(song)
                             }}>
-                    <p>{song.title}</p>
-                    <img
-                        className="icon"
-                        src="https://i.imgur.com/2GlG8J6.png" 
-                        alt="select as favorite"
-                        onClick={
-                            (event) => {
-                                event.stopPropagation()
-                                if (event.target.src === "https://i.imgur.com/2GlG8J6.png") {
-                                    event.target.src = "https://i.imgur.com/kRCB5ua.png"
-                                    setFavSongs([...favSongs, song])
-                                } else if (event.target.src === "https://i.imgur.com/kRCB5ua.png") {
-                                    event.target.src = "https://i.imgur.com/2GlG8J6.png"
-                                    const filtered = favSongs.filter(currentSong => currentSong.id === song.id)
-                                    console.log(filtered)
+                    
+                    <span>
+                        <img
+                            className="icon"
+                            src="https://i.imgur.com/2GlG8J6.png" 
+                            alt="select as favorite"
+                            onClick={
+                                (event) => {
+                                    event.stopPropagation()
+                                    if (event.target.src === "https://i.imgur.com/2GlG8J6.png") {
+                                        event.target.src = "https://i.imgur.com/kRCB5ua.png"
+                                        setFavSongs([...favSongs, song])
+                                    } else if (event.target.src === "https://i.imgur.com/kRCB5ua.png") {
+                                        event.target.src = "https://i.imgur.com/2GlG8J6.png"
+                                        const filtered = favSongs.filter(currentSong => currentSong.id === song.id)
+                                        console.log(filtered)
+                                    }
+                                    localStorage.setItem('favorite_songs', favSongs)
                                 }
-                                localStorage.setItem('favorite_songs', favSongs)
                             }
-                        }
-                    />
-                    <img
-                        className="icon play-pause-button"
-                        src="https://i.imgur.com/3iuXw3H.png"
-                        alt="play-pause-button"
-                        onClick={handlePauseButton} 
-                    />
+                        />
+                    </span>
+                    <span>
+                        <p>{song.title}</p>
+                    </span>
+                    <span>
+                        <img
+                            className="icon play-pause-button"
+                            src="https://i.imgur.com/3iuXw3H.png"
+                            alt="play-pause-button"
+                            onClick={handlePauseButton} 
+                        />
+                    </span>
                     {/* {playPauseButton(songUrl)} */}
                 </li>
             )

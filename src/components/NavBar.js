@@ -1,5 +1,6 @@
 import React, { useState }from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
+import ProtectedUsersButton from './ProtectedUsersButton';
 
 function NavBar(props) {
     const handleClick = (event) => {
@@ -54,19 +55,19 @@ function NavBar(props) {
         <div className="action">
             <div className="menu">
                 <ul>
-                    <li>
+                    {/* <li>
                         <img src="https://i.imgur.com/CEXJZby.png" alt=""/>
                         <a href="/profile">My Profile</a>
                     </li>
                     <li>
                         <img src="https://i.imgur.com/uXKssFa.png" alt=""/>
                         <a href="/profile">Edit Profile</a>
-                    </li>
+                    </li> */}
                     <li>
                         <img src="https://i.imgur.com/o1lLeoo.png" alt=""/>
                         <a href="/">Discover Music</a>
                     </li>
-                    {displayUsers()}
+                    {/* {displayUsers()} */}
                     {/* {displayAddGenre()}
                     {displayAddArtist()}
                     {displayAddSong()} */}
@@ -74,6 +75,7 @@ function NavBar(props) {
                         <img src="https://i.imgur.com/5Luz861.png" alt=""/>
                         <a onClick={handleClick} href="/">Logout</a>
                     </li>
+                    <ProtectedUsersButton />
                 </ul>
             </div>
         </div>
