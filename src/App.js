@@ -10,6 +10,7 @@ import AddArtistForm from './forms/AddArtistForm';
 import AddSongForm from './forms/AddSongForm';
 import LoginForm from './forms/LoginForm';
 import SignUpForm from './forms/SignUpForm';
+import Header from './components/Header';
 // import ProtectedUsersButton from './components/ProtectedUsersButton';
 const baseUrl = 'https://cmss-radio-api.herokuapp.com/'
 
@@ -79,6 +80,7 @@ export default class App extends Component {
     render() {
       return (
         <div className="App">
+          <Header user={this.state.user}/>
           {/* {displayItems()} */}
           <Switch>
             <Route 
@@ -88,6 +90,18 @@ export default class App extends Component {
             <Route 
               path="/sign-up" 
               render={(routerProps) => <SignUpForm {...routerProps} user={this.state.user} signUp={this.signUp}/>} 
+            />
+            <Route
+              path="/add-artist" 
+              render={(routerProps) => <AddArtistForm {...routerProps} user={this.state.user} signUp={this.signUp}/>} 
+            />
+            <Route
+              path="/add-genre" 
+              render={(routerProps) => <AddGenreForm {...routerProps} user={this.state.user} signUp={this.signUp}/>} 
+            />
+            <Route
+              path="/add-song" 
+              render={(routerProps) => <AddSongForm {...routerProps} user={this.state.user} signUp={this.signUp}/>} 
             />
             <PrivateRoute exact path='/' component={HomePage} user={this.state.user} />
             <PrivateRoute exact path="/profile" component={ProfilePage} user={this.state.user} />

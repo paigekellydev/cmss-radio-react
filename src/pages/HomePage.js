@@ -11,9 +11,6 @@ const baseUrl = 'https://cmss-radio-api.herokuapp.com'
 
 export default function Home(props) {
 
-    const [displayNavBar, setDisplayNavBar] = useState(false)
-    const [songListUrl, setSongListUrl] = useState('')
-
     const displayAdminDashboard = () => {
         if (props.user.authorized_user === true) {
             return <AdminDashboard />
@@ -26,49 +23,12 @@ export default function Home(props) {
         props.history.push('/profile')
     }
 
-    const displayNav = (event) => {
-        if (displayNavBar) {
-            return (
-                <NavBar 
-                    authorized={props.user.authorized_user} 
-                    handleLogout={props.handleLogout} 
-                    name={`${props.user.first_name} ${props.user.last_name}`}
-                />
-            )
-        }
-    }
-
-    const handleProfileClick = (event) => {
-        if (displayNavBar === false) {
-            setDisplayNavBar(true)
-        } else {
-            setDisplayNavBar(false)
-        }
-    }
-
-    // const displayUsers = () => {
-    //     console.log(props.user)
-    //     // if (props.user.authorized_user) {
-    //     //     return <ProtectedUsersButton />
-    //     // } else {
-    //     //     return null
-    //     // }
-    // }
     return (
         <div>
-            <header>
-                <span>
-                    <img className="logo" src="https://i.imgur.com/ey6gFFK.png" alt="" />
-                </span>
-                <span>
-                    <p onClick={handleProfileClick}>{`${localStorage.first_name} ${localStorage.last_name}`}</p>
-                </span>
-            </header>
             <section className="home">
                 <GenreMenu />
                 <SongList />
             </section>
-            {displayNav()}
             {displayAdminDashboard()}
             {/* <NavBar authorized={props.user.authorized_user} handleLogout={props.handleLogout} name={`${props.user.first_name} ${props.user.last_name}`}/> */}
             {/* {displayUsers()} */}
@@ -78,7 +38,7 @@ export default function Home(props) {
             {/* <AddGenreForm /> */}
             {/* {displayOwnerDashboard()} */}
             {/* <button onClick={handleClick}>View Profile</button> */}
-            <Song />
+            {/* <Song /> */}
         </div>
     )
 }

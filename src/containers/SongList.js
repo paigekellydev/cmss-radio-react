@@ -15,6 +15,8 @@ export default function SongList(props) {
     const [isLoading, setLoading] = useState(false)
     const [isPaused, setIsPaused] = useState(false)
     const [displayFav, setDisplayFav] = useState(true)
+    // const [currentFav, setFavSongs] = useState([])
+    const [favSongs, setFavSongs] = useState([])
 
     useEffect(() => {
 
@@ -37,35 +39,34 @@ export default function SongList(props) {
             })
     })
 
-    // const handlePauseButton = (event, songUrl) => {
-    //     if (songUrl !== song || isPaused === true ) {
-    //             setIsPaused(false)
-    //             document.getElementById("audio").play()
-    //             event.target.src="https://i.imgur.com/3iuXw3H.png"
-    //         } else {
-    //             setIsPaused(true)
-    //             document.getElementById("audio").pause()
-    //             event.target.src="https://i.imgur.com/3iuXw3H.png"
-
-    //     }
-    // }
-    const myAudio = document.getElementById("audio")
     const handlePauseButton = (event, songUrl) => {
-        if (myAudio.duration > 0 && !myAudio.paused || songUrl === song && !isPaused) {
-            myAudio.pause()
-            setIsPaused(true)
-            event.target.src="https://i.imgur.com/3iuXw3H.png"
-        } else if (myAudio.duration > 0 && myAudio.paused || songUrl === song) {
-            setIsPaused(false)
-            document.getElementById("audio").play()
-            event.target.src="https://i.imgur.com/CeQBhBy.png"
+        if (songUrl !== song || isPaused === true ) {
+                setIsPaused(false)
+                event.target.src="https://i.imgur.com/3iuXw3H.png"
+            } else {
+                setIsPaused(true)
+                event.target.src="https://i.imgur.com/3iuXw3H.png"
+
         }
     }
+    // const handlePauseButton = (event, songUrl) => {
+    //     const myAudio = document.getElementById("audio");
+    //     if (!myAudio.paused || songUrl === song ) {
+    //         myAudio.pause()
+    //         setIsPaused(true)
+    //         event.target.src="https://i.imgur.com/3iuXw3H.png"
+    //     } else if (myAudio.duration > 0 && myAudio.paused || songUrl === song) {
+    //         setIsPaused(false)
+    //         document.getElementById("audio").play()
+    //         event.target.src="https://i.imgur.com/CeQBhBy.png"
+    //     }
+    // }
 
-    const handleFavClick = (event) => {
+    const handleFavClick = (event, songInfo) => {
         event.stopPropagation()
         if (event.target.src === "https://i.imgur.com/2GlG8J6.png") {
             event.target.src = "https://i.imgur.com/kRCB5ua.png"
+            console.log(songInfo)
         } else if (event.target.src === "https://i.imgur.com/kRCB5ua.png") {
             event.target.src = "https://i.imgur.com/2GlG8J6.png"
         }
@@ -94,6 +95,8 @@ export default function SongList(props) {
         // const songArray = []
         return songs.map((song) => {
             const songUrl = song.song_url
+            const songInfo = song
+            // console.log(song)s
             return (
                 <li key={song.id}
                     onClick={e => {
@@ -105,7 +108,20 @@ export default function SongList(props) {
                         className="icon"
                         src="https://i.imgur.com/2GlG8J6.png" 
                         alt="select as favorite"
-                        onClick={handleFavClick}
+                        onClick={
+                            (event) => {
+                                event.stopPropagation()
+                                if (event.target.src === "https://i.imgur.com/2GlG8J6.png") {
+                                    event.target.src = "https://i.imgur.com/kRCB5ua.png"
+                                    setFavSongs([...favSongs, song])
+                                } else if (event.target.src === "https://i.imgur.com/kRCB5ua.png") {
+                                    event.target.src = "https://i.imgur.com/2GlG8J6.png"
+                                    const filtered = favSongs.filter(currentSong => currentSong.id === song.id)
+                                    console.log(filtered)
+                                }
+                                localStorage.setItem('favorite_songs', favSongs)
+                            }
+                        }
                     />
                     <img
                         className="icon play-pause-button"
@@ -129,7 +145,6 @@ export default function SongList(props) {
     }
 
     const previousSong = (event) => {
-        console.log('next')
         if (songIndex <= songs.length - 1 && songIndex !== 0) {
             setSongIndex(songIndex - 1)
         } else if (songIndex === 0) {
@@ -140,11 +155,12 @@ export default function SongList(props) {
        setSong(songs[songIndex].song_url)
     }
 
-    const handlePlay = (event) => {
-        if(myAudio.paused) {
-            myAudio.play()
-        }
-    }
+    // const handlePlay = (event) => {
+    //     if(myAudio.paused) {
+    //         myAudio.play()
+    //         document.querySelectorAll('play-pause-button').src =
+    //     }
+    // }
 
     return (
         <section className="song-list">
@@ -152,51 +168,17 @@ export default function SongList(props) {
             <ul>
                 {displaySongs()}
             </ul>
-            <figure>
-                <figcaption></figcaption>
+            <AudioPlayer
+                id="audio-player"
+                layout="stacked-reverse"
+                showSkipControls={true}
+                showJumpControls={false}
+                src={song}
+                onPlay={e => console.log("onPlay")}
+                onClickPrevious={previousSong}
+                onClickNext={nextSong}
+            />
 
-                <div> 
-                    <button onClick={previousSong}>Previous</button>
-                    <button onclick={handlePlay}>Play</button> 
-                    {/* <button onclick={document.getElementById('audio').pause()}>Pause</button> 
-                    <button onclick={document.getElementById('audio').volume += 0.1}>Vol +</button> 
-                    <button onclick={document.getElementById('audio').volume -= 0.1}>Vol -</button>  */}
-                    <button onClick={nextSong}>Next</button>
-                    <AudioPlayer
-                        id="audio-player"
-                        // autoPlay
-                        layout="stacked-reverse"
-                        showSkipControls={true}
-                        showJumpControls={false}
-                        src={song}
-                        onPlay={e => console.log("onPlay")}
-                        onClickPrevious={previousSong}
-                        onClickNext={nextSong}
-                      />
-                    {/* <img
-                        className=""
-                        src="https://i.imgur.com/3iuXw3H.png"
-                        alt="next-button"
-                        onClick={previousSong} 
-                    />
-                    <img
-                        className=""
-                        src="https://i.imgur.com/3iuXw3H.png"
-                        alt="play-pause-button"
-                        onClick={handlePauseButton} 
-                    />
-                    <img
-                        className=""
-                        src="https://i.imgur.com/3iuXw3H.png"
-                        alt="next-button"
-                        onClick={nextSong} 
-                    /> */}
-                </div>
-                {/* <audio id="audio" src={song} controls autoPlay>
-                </audio> */}
-                {/* <button onClick={shuffleSongs}>Shuffle</button> */}
-                {/* <button>Loop</button> */}
-            </figure>
             {/* <Song songs={songs}/> */}
         </section>
     )

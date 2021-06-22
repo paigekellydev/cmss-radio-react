@@ -7,16 +7,30 @@ function NavBar(props) {
     }
     
     const displayUsers = () => {
-        console.log(props)
-        if (props.authorized === true) {
+        if (localStorage.authorized_user) {
             return (
-                <li>
-                    <img src="https://image.flaticon.com/icons/png/512/633/633781.png" alt=""/>
-                    <a href="/users">View All Users</a>
-                </li>
+                <ul>
+                    <li>
+                        <img src="https://i.imgur.com/jeUvrsa.png" alt=""/>
+                        <a href="/users">View All Users</a>
+                    </li>
+                    <li>
+                        <img src="https://i.imgur.com/RQPRX1X.png" alt=""/>
+                        <a href="/add-genre">Add Genre</a>
+                    </li>
+                    <li>
+                        <img src="https://i.imgur.com/RQPRX1X.png" alt=""/>
+                        <a href="/add-artist">Add Artist</a>
+                    </li>
+                    <li>
+                        <img src="https://i.imgur.com/RQPRX1X.png" alt=""/>
+                        <a href="/add-song">Add Song</a>
+                    </li>
+                </ul>
             )
         }
     }
+
     return (
 
         <div className="action">
@@ -26,19 +40,19 @@ function NavBar(props) {
                         <img src="https://i.imgur.com/CEXJZby.png" alt=""/>
                         <a href="/profile">My Profile</a>
                     </li>
-                    {displayUsers()}
                     <li>
                         <img src="https://i.imgur.com/uXKssFa.png" alt=""/>
                         <a href="/profile">Edit Profile</a>
                     </li>
                     <li>
                         <img src="https://i.imgur.com/o1lLeoo.png" alt=""/>
-                        <a href="/profile">Discover Music</a>
+                        <a href="/">Discover Music</a>
                     </li>
                     <li>
                         <img src="https://i.imgur.com/5Luz861.png" alt=""/>
                         <a onClick={handleClick} href="/">Logout</a>
                     </li>
+                    {displayUsers()}
                 </ul>
             </div>
         </div>

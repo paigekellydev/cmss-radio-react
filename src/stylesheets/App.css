@@ -10,6 +10,10 @@ body {
 	/* background-image: url(https://t3.ftcdn.net/jpg/03/54/01/56/360_F_354015600_Rri9EiEU4le3QxuBuDD0AFhqRbZpwHyE.webp); */
 	/* width: 100vw; */
 }
+
+section.song-list {
+	overflow: hidden;
+}
 /* body:before {
 	content: '';
 	position: fixed;
