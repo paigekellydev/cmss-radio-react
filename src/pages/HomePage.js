@@ -25,7 +25,7 @@ export default function Home(props) {
             headers: {
                 Authorization: `Bearer ${localStorage.token}`
             }
-        })
+        }, [])
             .then(response => response.json())
             .then(results => {
                 if (results.songs) {
@@ -37,7 +37,7 @@ export default function Home(props) {
     })
 
     const handlePauseButton = (event, songUrl) => {
-        if (songUrl !== song || isPaused === true ) {
+        if (isPaused === true ) {
                 setIsPaused(false)
                 event.target.src="https://i.imgur.com/3iuXw3H.png"
             } else {
@@ -62,37 +62,59 @@ export default function Home(props) {
             const songUrl = song.song_url
             const songInfo = song
             return (
-                <li key={song.id}
+                <li className="song-li"
+                    key={song.id}
                     onClick={e => {
                                 setSong(songUrl);
-                                setSongInfo(song)
+                                setSongInfo(songs[songIndex])
+                                document.getElementById(`clicked ${song.id}`).style.color = "#ff0000";
                             }}>
-                    <p>{song.title}</p>
-                    <img
-                        className="icon"
-                        src="https://i.imgur.com/2GlG8J6.png" 
-                        alt="select as favorite"
-                        onClick={
-                            (event) => {
-                                event.stopPropagation()
-                                if (event.target.src === "https://i.imgur.com/2GlG8J6.png") {
-                                    event.target.src = "https://i.imgur.com/kRCB5ua.png"
-                                    setFavSongs([...favSongs, song])
-                                } else if (event.target.src === "https://i.imgur.com/kRCB5ua.png") {
-                                    event.target.src = "https://i.imgur.com/2GlG8J6.png"
-                                    const filtered = favSongs.filter(currentSong => currentSong.id === song.id)
-                                    console.log(filtered)
+                    <span>
+                        <img
+                            className="icon"
+                            src="https://i.imgur.com/2GlG8J6.png" 
+                            alt="select as favorite"
+                            // onClick={
+                            //     (event) => {
+                            //         event.stopPropagation()
+                            //         if (event.target.src === "https://i.imgur.com/2GlG8J6.png") {
+                            //             event.target.src = "https://i.imgur.com/kRCB5ua.png"
+                            //             setFavSongs([...favSongs, song])
+                            //         } else if (event.target.src === "https://i.imgur.com/kRCB5ua.png") {
+                            //             event.target.src = "https://i.imgur.com/2GlG8J6.png"
+                            //             const filtered = favSongs.filter(currentSong => currentSong.id === song.id)
+                            //             console.log(filtered)
+                            //         }
+                            //         localStorage.setItem('favorite_songs', favSongs)
+                            //     }
+
+                            onClick={
+                                (event) => {
+                                    if (event.target.src === "https://i.imgur.com/2GlG8J6.png") {
+                                        event.target.src = "https://i.imgur.com/kRCB5ua.png"
+                                        setFavSongs([...favSongs, song])
+                                    } else if (event.target.src === "https://i.imgur.com/kRCB5ua.png") {
+                                        event.target.src = "https://i.imgur.com/2GlG8J6.png"
+                                        const filtered = favSongs.filter(currentSong => currentSong.id === song.id)
+                                        console.log(filtered)
+                                    }
+                                    localStorage.setItem('favorite_songs', favSongs)
                                 }
-                                localStorage.setItem('favorite_songs', favSongs)
                             }
-                        }
-                    />
+                        />
+                    </span>
+                    <span>
                     <img
                         className="icon play-pause-button"
-                        src="https://i.imgur.com/3iuXw3H.png"
+                        src="https://i.imgur.com/WmdtqRp.png"
                         alt="play-pause-button"
                         onClick={handlePauseButton} 
                     />
+                    </span>
+                    <span>
+                        <p id={`clicked ${song.id}`}>{song.title}</p>
+                    </span>
+                    <br></br>
                 </li>
             )
         })
@@ -105,9 +127,11 @@ export default function Home(props) {
             setSongIndex(songIndex + 1)
         }
        setSong(songs[songIndex].song_url)
+       setSongInfo(songs[songIndex])
     }
 
     const previousSong = (event) => {
+        console.log({songInfo})
         if (songIndex <= songs.length - 1 && songIndex !== 0) {
             setSongIndex(songIndex - 1)
         } else if (songIndex === 0) {
@@ -116,18 +140,22 @@ export default function Home(props) {
             setSongIndex(0)
         }
        setSong(songs[songIndex].song_url)
+       setSongInfo(songs[songIndex])
     }
 
     return (
         <div>
             <div className="home-container">
                 <section className="song-list">
-                    <h4>Song List</h4>
+                    <h5>Song List</h5>
                     <ul>
                         {displaySongs()}
                     </ul>
                 </section>
                 <GenreMenu />
+            </div>
+            <div>
+                <p>{`Playing ${songInfo.title} by ${songInfo.artist}`}</p>
             </div>
             <AudioPlayer
                 id="audio-player"
@@ -135,11 +163,10 @@ export default function Home(props) {
                 showSkipControls={true}
                 showJumpControls={false}
                 src={song}
-                onPlay={e => console.log("onPlay")}
+                onPlay={e => console.log({songInfo})}
                 onClickPrevious={previousSong}
                 onClickNext={nextSong}
             />
-            <ProtectedUsersButton />
         </div>
     )
 }

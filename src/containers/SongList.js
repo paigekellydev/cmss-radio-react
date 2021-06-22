@@ -37,7 +37,7 @@ export default function SongList(props) {
                     setSongs(results)
                 }
             })
-    })
+    }, [])
 
     const handlePauseButton = (event, songUrl) => {
         if (songUrl !== song || isPaused === true ) {
@@ -84,7 +84,7 @@ export default function SongList(props) {
                                 setSongInfo(song)
                             }}>
                     
-                    <span>
+                    {/* <div>
                         <img
                             className="icon"
                             src="https://i.imgur.com/2GlG8J6.png" 
@@ -104,18 +104,18 @@ export default function SongList(props) {
                                 }
                             }
                         />
-                    </span>
-                    <span>
-                        <p>{song.title}</p>
-                    </span>
-                    <span>
+                    </div>
+                    <div> */}
+                        {/* <p>{song.title}</p>
+                    </div>
+                    <div>
                         <img
                             className="icon play-pause-button"
                             src="https://i.imgur.com/3iuXw3H.png"
                             alt="play-pause-button"
                             onClick={handlePauseButton} 
                         />
-                    </span>
+                    </div> */}
                     {/* {playPauseButton(songUrl)} */}
                 </li>
             )

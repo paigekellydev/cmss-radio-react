@@ -8,7 +8,7 @@ function NavBar(props) {
     }
     
     const displayUsers = () => {
-        if (localStorage.authorized_user) {
+        if (localStorage.authorized_user !== "false") {
             return (
                     <li>
                         <img src="https://i.imgur.com/jeUvrsa.png" alt=""/>
@@ -67,7 +67,7 @@ function NavBar(props) {
                         <img src="https://i.imgur.com/o1lLeoo.png" alt=""/>
                         <a href="/">Discover Music</a>
                     </li>
-                    {/* {displayUsers()} */}
+                    {displayUsers()}
                     {/* {displayAddGenre()}
                     {displayAddArtist()}
                     {displayAddSong()} */}
@@ -75,7 +75,6 @@ function NavBar(props) {
                         <img src="https://i.imgur.com/5Luz861.png" alt=""/>
                         <a onClick={handleClick} href="/">Logout</a>
                     </li>
-                    <ProtectedUsersButton />
                 </ul>
             </div>
         </div>

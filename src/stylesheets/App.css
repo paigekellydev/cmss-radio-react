@@ -6,24 +6,38 @@ body {
 	background: linear-gradient(black, red);
 	/* background: rgb(0,0,0); */
 	/* background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(253,29,29,1) 50%, rgba(0,0,0,1) 100%); */
-	height: 100;
+	height: 100%;
 	/* background-image: url(https://t3.ftcdn.net/jpg/03/54/01/56/360_F_354015600_Rri9EiEU4le3QxuBuDD0AFhqRbZpwHyE.webp); */
 	width: 100vw;
 	cursor: pointer;
+
 }
 
 html {
 	height: 100%;
 	cursor: pointer;
+	color: white;
 }
 
 section.song-list {
 	/* overflow: hidden; */
+	cursor: pointer;
 	position: relative;
+}
+
+p {
+	display: inline;
 }
 
 div.home-container {
 	display: flex;
+}
+div{
+	cursor: pointer;
+}
+
+span {
+	display: inline;
 }
 /* body:before {
 	content: '';
@@ -85,8 +99,6 @@ div.home-container {
 	float:right;
 	width: 100px;
 }
-
-
 
 .add-button:hover {
   transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
@@ -159,12 +171,17 @@ input[type=checkbox] {
 	padding: 100px;
 	padding-top: 0;
 }
-.genre-menu {
+.genre-menu, .users-menu {
 	box-shadow: 2px 20px 100px black;
 }
-.genre-menu h3 {
+.genre-menu h3, .users-menu h3 {
 	margin-left: 50%;
+	color: white;
 }
+
+/* .table {
+	padding: 100px;
+} */
 
 .genre-card {
 	flex-direction: row;
@@ -185,7 +202,7 @@ input[type=checkbox] {
 
 .action {
 	position: fixed;
-	top: 30px;
+	top: 50px;
 	right: 30px;
 }
 
@@ -193,6 +210,8 @@ header span p {
 	position: fixed;
 	top: 20px;
 	right: 30px;
+	color: white;
+	padding-bottom: 100px;
 }
 
 .action .profile {
@@ -217,26 +236,22 @@ div.rhap_container {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #000000;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: black;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-li.span { 
-    display: inline;
 }
 
 li {
@@ -253,14 +268,23 @@ li {
 
 li {
 	list-style-type: none;
+	padding: 20px;
+	margin-bottom: 30px;
+}
+
+li .song-li {
+	margin-bottom: 100px;
 }
 
 .icon {
 	width: 15px;
 	height: 15px;
-	padding: 20px;
+	/* padding: 20px; */
 }
 
+span {
+	padding: 20px;
+}
 /* .action img {
 	position: absolute;
 	top: 0;
@@ -281,6 +305,7 @@ li {
 	transition: 0.5s;
 }
 
+
 .action .menu h3 {
 	width: 100%;
 	text-align: center;
@@ -291,28 +316,20 @@ li {
 	line-height: 1.2em;
 }
 
-.action .menu::before {
-	content: '';
-	position: absolute;
-	top: 25px;
-	right: 28px;
-	width: 20px;
-	height: 20px;
-	background: rgb(4, 4, 4);
-	transform: rotate(45deg);
-}
 .home {
 	display: flex;
 }
 .song-list {
 	display: block;
+	color: white;
 	/* position: absolute; */
 	background: rgba(4, 4, 4, 0.583);
-	margin: 0;
-	/* padding:20px; */
-	width: 40%;
-	height: 600px;
+	margin-bottom: 0;
+	padding-right:10px;
+	padding-bottom:20px;
+	width: 60%;
 	overflow: scroll;
+	font-size: 18px;
 }
 
 .action .menu ul li{
@@ -321,6 +338,7 @@ li {
 	border-top: 1px solid rbga(0, 0, 0, 0.05);
 	display: flex;
 	align-items: center;
+	color: #555;
 	/* justify-content: center; */
 }
 
@@ -342,8 +360,12 @@ li {
 	font-weight: 500;
 	transition: 0.5s;
 }
-.action .menu ul li:hover a {
+.action .menu ul li:hover a, .song-list li:hover, .song-list li a:visited {
 	color:red;
+}
+
+.table {
+
 }
 
 header {

@@ -11,6 +11,8 @@ import AddSongForm from './forms/AddSongForm';
 import LoginForm from './forms/LoginForm';
 import SignUpForm from './forms/SignUpForm';
 import Header from './components/Header';
+import ProtectedUsersButton from './components/ProtectedUsersButton';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import ProtectedUsersButton from './components/ProtectedUsersButton';
 const baseUrl = 'https://cmss-radio-api.herokuapp.com/'
 
@@ -35,16 +37,17 @@ export default class App extends Component {
             password 
           }
         })
-    })
+    }, [])
     .then(response => response.json())
     .then(result => {
       if (result.token) {
+        this.setState({user: result.user})
         localStorage.setItem('token', result.token)
         localStorage.setItem('user', result.user)
         localStorage.setItem('first_name', result.user.first_name)
         localStorage.setItem('last_name', result.user.last_name)
         localStorage.setItem('authorized_user', result.user.authorized_user)
-        this.setState({user: result.user})
+        localStorage.setItem('song_fetch_url', `${baseUrl}songs`)
         history.push('/')
       } else {
         this.setState({error: result.error})
@@ -86,6 +89,10 @@ export default class App extends Component {
             <Route 
               path="/login" 
               render={(routerProps) => <LoginForm {...routerProps} user={this.state.user} login={this.login}/>} 
+            />
+            <Route 
+              path="/users" 
+              render={(routerProps) => <ProtectedUsersButton {...routerProps} />} 
             />
             <Route 
               path="/sign-up" 

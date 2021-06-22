@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "@trendmicro/react-sidenav": "^0.5.0",
     "bootstrap": "^5.0.1",
+    "bootstrap-table": "^1.18.3",
     "mediaelement": "^4.2.16",
     "mobx": "^6.3.2",
     "mobx-react": "^7.2.0",
@@ -25,6 +26,7 @@
     "react-scripts": "4.0.3",
     "reactstrap": "^8.9.0",
     "redux": "^4.1.0",
+    "table": "^6.7.1",
     "wavesurfer": "^1.3.4",
     "web-vitals": "^1.0.1"
   },
