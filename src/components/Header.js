@@ -5,13 +5,13 @@ export default function Header(props) {
 
     const [displayNavBar, setDisplayNavBar] = useState(false)
 
-    const displayNav = (event) => {
+    const displayNavElement = () => {
         if (displayNavBar) {
             return (
                 <NavBar 
-                    authorized={props.user.authorized_user} 
-                    handleLogout={props.handleLogout} 
-                    name={`${props.user.first_name} ${props.user.last_name}`}
+                        authorized={props.user.authorized_user} 
+                        handleLogout={props.handleLogout} 
+                        name={`${props.user.first_name} ${props.user.last_name}`}
                 />
             )
         }
@@ -24,13 +24,24 @@ export default function Header(props) {
             setDisplayNavBar(false)
         }
     }
+
+    const displayNav = (event) => {
+        if (localStorage.user) {
+            return (
+                <div>
+                    <span>
+                        <p onClick={handleProfileClick}>{`${localStorage.first_name} ${localStorage.last_name}`}</p>
+                    </span>
+                    {displayNavElement()}
+                </div>
+            )
+        }
+    }
+
     return (
         <header>
             <span>
                 <img className="logo" src="https://i.imgur.com/ey6gFFK.png" alt="" />
-            </span>
-            <span>
-                <p onClick={handleProfileClick}>{`${localStorage.first_name} ${localStorage.last_name}`}</p>
             </span>
             {displayNav()}
         </header>

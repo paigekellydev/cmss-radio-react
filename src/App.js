@@ -91,18 +91,6 @@ export default class App extends Component {
               path="/sign-up" 
               render={(routerProps) => <SignUpForm {...routerProps} user={this.state.user} signUp={this.signUp}/>} 
             />
-            <Route
-              path="/add-artist" 
-              render={(routerProps) => <AddArtistForm {...routerProps} user={this.state.user} signUp={this.signUp}/>} 
-            />
-            <Route
-              path="/add-genre" 
-              render={(routerProps) => <AddGenreForm {...routerProps} user={this.state.user} signUp={this.signUp}/>} 
-            />
-            <Route
-              path="/add-song" 
-              render={(routerProps) => <AddSongForm {...routerProps} user={this.state.user} signUp={this.signUp}/>} 
-            />
             <PrivateRoute exact path='/' component={HomePage} user={this.state.user} />
             <PrivateRoute exact path="/profile" component={ProfilePage} user={this.state.user} />
             <PrivateAdminRoute exact path="/add-genre" component={AddGenreForm} user={this.state.user} />

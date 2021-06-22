@@ -9,24 +9,42 @@ function NavBar(props) {
     const displayUsers = () => {
         if (localStorage.authorized_user) {
             return (
-                <ul>
                     <li>
                         <img src="https://i.imgur.com/jeUvrsa.png" alt=""/>
                         <a href="/users">View All Users</a>
                     </li>
-                    <li>
+            )
+        }
+    }
+    const displayAddGenre = () => {
+        if (localStorage.authorized_user) {
+            return (
+                <li>
                         <img src="https://i.imgur.com/RQPRX1X.png" alt=""/>
                         <a href="/add-genre">Add Genre</a>
                     </li>
-                    <li>
-                        <img src="https://i.imgur.com/RQPRX1X.png" alt=""/>
-                        <a href="/add-artist">Add Artist</a>
-                    </li>
-                    <li>
-                        <img src="https://i.imgur.com/RQPRX1X.png" alt=""/>
-                        <a href="/add-song">Add Song</a>
-                    </li>
-                </ul>
+            )
+        }
+    }
+    
+    const displayAddArtist = () => {
+        if (localStorage.authorized_user) {
+            return (
+                <li>
+                    <img src="https://i.imgur.com/RQPRX1X.png" alt=""/>
+                    <a href="/add-artist">Add Artist</a>
+                </li>
+            )
+        }
+    }
+
+    const displayAddSong = () => {
+        if (localStorage.authorized_user) {
+            return (
+                <li>
+                    <img src="https://i.imgur.com/RQPRX1X.png" alt=""/>
+                    <a href="/add-song">Add Song</a>
+                </li>
             )
         }
     }
@@ -48,11 +66,14 @@ function NavBar(props) {
                         <img src="https://i.imgur.com/o1lLeoo.png" alt=""/>
                         <a href="/">Discover Music</a>
                     </li>
+                    {displayUsers()}
+                    {/* {displayAddGenre()}
+                    {displayAddArtist()}
+                    {displayAddSong()} */}
                     <li>
                         <img src="https://i.imgur.com/5Luz861.png" alt=""/>
                         <a onClick={handleClick} href="/">Logout</a>
                     </li>
-                    {displayUsers()}
                 </ul>
             </div>
         </div>
