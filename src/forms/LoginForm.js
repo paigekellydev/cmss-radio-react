@@ -38,7 +38,7 @@ export default function LoginForm(props) {
                 <input className="submit-button" type="submit" value="Sign In"/>
                 <p>
                     Don't have an account?
-                    <Link to="/sign-up">Sign Up</Link>
+                    <Link to="/sign-up">  Sign Up</Link>
                 </p>
             </form>
         </div>
