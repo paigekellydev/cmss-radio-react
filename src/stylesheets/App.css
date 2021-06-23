@@ -19,11 +19,15 @@ html {
 	color: white;
 }
 
-section.song-list {
-	/* overflow: hidden; */
+div section.song-list {
+	overflow: scroll;
 	cursor: pointer;
 	position: relative;
+	width: 20%;
+	height: 600px;
+	/* color: rgb(233, 87, 87); */
 }
+
 
 p {
 	display: inline;
@@ -268,12 +272,10 @@ li {
 
 li {
 	list-style-type: none;
-	padding: 20px;
-	margin-bottom: 30px;
 }
 
 li .song-li {
-	margin-bottom: 100px;
+	/* margin-bottom: 100px; */
 }
 
 .icon {

@@ -13,14 +13,15 @@ export default function SongTable(props) {
     }
     
     const handlePlayPause = (event) => {
-        props.handlePlayPauseButton(
-            event, 
-            props.song.title, 
-            props.song.artist.name, 
-            props.song.song_url
-        )
-        // document.getElementById(`clicked ${props.song.id}`).style["boxShadow"] = "0 0 5px red"
-        document.getElementById(`clicked ${props.song.id}`).style["text-shadow"] = '1px 1px 3px red';
+        console.log(props.song)
+        // props.handlePauseButton(
+        //     event, 
+        //     props.song.title, 
+        //     props.song.artist.name, 
+        //     props.song.song_url
+        // )
+        // // document.getElementById(`clicked ${props.song.id}`).style["boxShadow"] = "0 0 5px red"
+        // document.getElementById(`clicked ${props.song.id}`).style["text-shadow"] = '1px 1px 3px red';
         // document.querySelector(`play-pause-button ${props.song.id}`).style["text-shadow"] = '1px 2px 3px red';
 
     }
