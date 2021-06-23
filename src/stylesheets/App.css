@@ -283,7 +283,7 @@ li .song-li {
 }
 
 span {
-	padding: 20px;
+	/* padding: 20px; */
 }
 /* .action img {
 	position: absolute;
@@ -364,9 +364,6 @@ span {
 	color:red;
 }
 
-.table {
-
-}
 
 header {
 	display: inline-block;
@@ -386,10 +383,21 @@ header h1 {
 	margin-left: -100px;
 	opacity: 0.5;
 	transition: 0.5s;
+  	display: block;
+  	float:left;
 
-  display: block;
-  float:left;
+}
 
+.song-info-div {
+	background-color: black;
+	color: #555;
+	justify-content: center;
+	padding: 20px;
+}
+
+.song-info-div p {
+	align-content: center;
+	margin-left: auto;
 }
 
 /* .action .menu h3 span {

@@ -27,12 +27,13 @@ export default function GenreMenu(props) {
     // On click function to display all songs
     const handleAllClick= (event) => {
         localStorage.setItem('song_fetch_url', `${baseUrl}/songs`)
+        localStorage.setItem('genre', 'All Songs')
     }
 
     // Display genre cards with image
     const displayGenres = () => {
         return genres.map((genre) => {
-            return <GenreCard key={genre.id} genre={genre} image={genre.img_url}/>
+            return <GenreCard setGenre={props.setGenre}key={genre.id} genre={genre} image={genre.img_url}/>
         } )
     }
 

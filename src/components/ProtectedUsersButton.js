@@ -21,9 +21,7 @@ export default function ProtectedUsersButton() {
     }, [])
 
     const displayUsers = () => {
-        console.log(users)
         return users.map((user) => {
-            console.log(user)
             return (
                 <tr key={user.id}>
                     <td>{user.first_name}</td>
