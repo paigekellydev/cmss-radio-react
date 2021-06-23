@@ -1,21 +1,14 @@
 import React from 'react'
 
-const baseUrl = 'https://cmss-radio-api.herokuapp.com'
-
 function GenreCard(props) {
 
     return (
         <div 
-            onClick={e => {
-                    localStorage.setItem('song_fetch_url', `${baseUrl}/genres/${props.genre.id}`)
-                    localStorage.setItem('genre', props.genre.name)
-                } 
-            }
+            onClick={_ => props.updateSongPath(`/genres/${props.genre.id}`)}
             className="genre-card" 
         >
-           <img className="genre-image" src={props.image}/>
+            <img className="genre-image" src={props.image}/>
         </div>
-        
     )
 }
 

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from '../components/NavBar'
 
-export default function Header(props) {
+export default function Header({ user, handleLogout}) {
 
     const [displayNavBar, setDisplayNavBar] = useState(false)
 
@@ -9,28 +9,26 @@ export default function Header(props) {
         if (displayNavBar) {
             return (
                 <NavBar 
-                        authorized={props.user.authorized_user} 
-                        handleLogout={props.handleLogout} 
-                        name={`${props.user.first_name} ${props.user.last_name}`}
+                    authorized={user.authorized_user} 
+                    handleLogout={handleLogout} 
+                    name={`${user.first_name} ${user.last_name}`}
                 />
             )
         }
     }
 
-    const handleProfileClick = (event) => {
-        if (displayNavBar === false) {
-            setDisplayNavBar(true)
-        } else {
-            setDisplayNavBar(false)
-        }
+    const handleProfileClick = _ => {
+        !displayNavBar
+            ? setDisplayNavBar(true)
+            : setDisplayNavBar(false)
     }
 
-    const displayNav = (event) => {
-        if (localStorage.user) {
+    const displayNav = _ => {
+        if (user.id) {
             return (
                 <div>
                     <span>
-                        <p onClick={handleProfileClick}>{`${localStorage.first_name} ${localStorage.last_name}`}</p>
+                        <p onClick={handleProfileClick}>{`${user.first_name} ${user.last_name}`}</p>
                     </span>
                     {displayNavElement()}
                 </div>
@@ -40,9 +38,7 @@ export default function Header(props) {
 
     return (
         <header>
-            <span>
-                <img className="logo" src="https://i.imgur.com/ey6gFFK.png" alt="" />
-            </span>
+            <img className="logo" src="https://i.imgur.com/ey6gFFK.png" alt="" />
             {displayNav()}
         </header>
     )
