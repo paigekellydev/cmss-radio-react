@@ -2,21 +2,21 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Poppins', sans-serif;
-	color: white;
+	color: #d4d4d4;
 	background: linear-gradient(black, red);
 	/* background: rgb(0,0,0); */
 	/* background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(253,29,29,1) 50%, rgba(0,0,0,1) 100%); */
-	height: 100%;
+	/* height: 100%; */
 	/* background-image: url(https://t3.ftcdn.net/jpg/03/54/01/56/360_F_354015600_Rri9EiEU4le3QxuBuDD0AFhqRbZpwHyE.webp); */
-	width: 100vw;
+	/* width: 100vw; */
 	cursor: pointer;
 
 }
 
 html {
-	height: 100%;
+	/* height: 100%; */
 	cursor: pointer;
-	color: white;
+	color: #d4d4d4;
 }
 
 div section.song-list {
@@ -25,7 +25,7 @@ div section.song-list {
 	position: relative;
 	width: 20%;
 	min-width: 12rem;
-	height: 60vh;
+	height: 75vh;
 	/* color: rgb(233, 87, 87); */
 }
 
@@ -93,7 +93,7 @@ span {
 	width: 150px;
 	border: none;
 	border-radius: 5%;
-	color: white;
+	color: #d4d4d4;
 	background: rgba(0, 0, 0, 0.351);
 	transition: transform .2s; /* Animation */
 	margin: 2em;
@@ -169,19 +169,27 @@ input[type=checkbox] {
 	width: 40%;
 }
 
+.rhap_time {
+	color: #d4d4d4 !important;
+}
+
 .genre-section {
 	display: flex;
-	justify-content: space-between;
+	align-content: center;
+	justify-content: start;
 	flex-wrap: wrap;
-	padding: 100px;
-	padding-top: 0;
+	/* padding: 16rem; */
+	margin: 20rem;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	padding-top: 2rem;
 }
 .genre-menu, .users-menu {
 	box-shadow: 2px 20px 100px black;
 }
 .genre-menu h3, .users-menu h3 {
 	margin-left: 50%;
-	color: white;
+	color: #d4d4d4;
 }
 
 /* .table {
@@ -211,11 +219,21 @@ input[type=checkbox] {
 	right: 30px;
 }
 
+h3, h5 {
+	padding-top: 4rem ;
+	padding-bottom: 2rem ;
+
+}
+
+h5 {
+	padding-left: 1.5rem;
+}
+
 header span p {
 	position: fixed;
-	top: 20px;
+	top: 1rem;
 	right: 30px;
-	color: white;
+	color: #d4d4d4;
 	padding-bottom: 100px;
 }
 
@@ -324,7 +342,7 @@ span {
 }
 .song-list {
 	display: block;
-	color: white;
+	color: #d4d4d4;
 	/* position: absolute; */
 	background: rgba(4, 4, 4, 0.583);
 	margin-bottom: 0;
