@@ -22,6 +22,22 @@ export default class App extends Component {
     user: {},
     error: {}
   }
+
+  componentDidMount() {
+    if (localStorage.token) {
+      fetch(baseUrl + 'profile', {
+        headers: { Authorization: `Bearer ${localStorage.token}`}
+      })
+        .then(response => response.json())
+        .then(result => {
+          if (result.error) {
+            console.error(result.error)
+          } else {
+            this.setState({ user: result })
+          }
+        })
+    }
+  }
   
   login = (username, password, history) => {
     fetch(baseUrl + 'login', {
@@ -43,11 +59,6 @@ export default class App extends Component {
       if (result.token) {
         this.setState({user: result.user})
         localStorage.setItem('token', result.token)
-        localStorage.setItem('user', result.user)
-        localStorage.setItem('first_name', result.user.first_name)
-        localStorage.setItem('last_name', result.user.last_name)
-        localStorage.setItem('authorized_user', result.user.authorized_user)
-        localStorage.setItem('song_fetch_url', `${baseUrl}songs`)
         history.push('/')
       } else {
         this.setState({error: result.error})

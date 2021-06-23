@@ -24,7 +24,8 @@ div section.song-list {
 	cursor: pointer;
 	position: relative;
 	width: 20%;
-	height: 600px;
+	min-width: 12rem;
+	height: 60vh;
 	/* color: rgb(233, 87, 87); */
 }
 
@@ -332,6 +333,11 @@ span {
 	width: 60%;
 	overflow: scroll;
 	font-size: 18px;
+}
+
+.song-list h5 {
+	margin-top: 0.2rem;
+  margin-left: 0.3rem;
 }
 
 .action .menu ul li{

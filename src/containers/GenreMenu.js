@@ -20,26 +20,26 @@ export default function GenreMenu(props) {
     
     // On click function to display user's favorite songs NEED TO CREATE ROUTE
     const handleFavoritesClick = (event) => {
-        localStorage.setItem('song_fetch_url', `${baseUrl}/songs`)
+        props.updateSongPath('/songs')
         // `${baseUrl}/users/${localStorage.user.id}`
     }
     
     // On click function to display all songs
     const handleAllClick= (event) => {
-        localStorage.setItem('song_fetch_url', `${baseUrl}/songs`)
+        props.updateSongPath('/songs')
         localStorage.setItem('genre', 'All Songs')
     }
 
     // Display genre cards with image
     const displayGenres = () => {
         return genres.map((genre) => {
-            return <GenreCard setGenre={props.setGenre}key={genre.id} genre={genre} image={genre.img_url}/>
+            return <GenreCard setGenre={props.setGenre}key={genre.id} genre={genre} image={genre.img_url} updateSongPath={props.updateSongPath} />
         } )
     }
 
     return (
         <div className="genre-menu">
-            <h3>Genre Menu</h3><br></br>
+            <h3>Genre Menu</h3>
             <section className="genre-section">
                 <div onClick={handleAllClick} className="genre-card all-songs" >
                     <img src='https://i.imgur.com/rcEzLex.png'/>

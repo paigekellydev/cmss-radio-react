@@ -163,14 +163,17 @@ export default function Home(props) {
     const [favSongs, setFavSongs] = useState([])
     const [artist, setArtist] = useState({})
     const [artistId, setArtistId] = useState(1)
+    const [songPath, setSongPath] = useState('/songs')
+
+    const updateSongPath = newPath => setSongPath(newPath);
 
     useEffect(() => {
-        fetch(localStorage.song_fetch_url, {
+        fetch(baseUrl + songPath, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${localStorage.token}`
             }
-        }, [])
+        })
             .then(response => response.json())
             .then(results => {
                 if (results.songs) {
@@ -179,7 +182,8 @@ export default function Home(props) {
                     setSongs(results)
                 }
             })
-    })
+    }, [songs])
+
     useEffect(() => {
         fetch(`https://cmss-radio-api.herokuapp.com/artists/${artistId}`, {
             method: 'GET',
@@ -323,7 +327,7 @@ export default function Home(props) {
                 {displaySongs()}
                 </Table>
                 </section>
-                <GenreMenu />
+                <GenreMenu updateSongPath={updateSongPath} />
             </div>
             {/* <div>
                 <p>{`Playing ${songInfo.title} by ${artist}`}</p>
