@@ -8,7 +8,7 @@ function NavBar(props) {
     }
     
     const displayUsers = () => {
-        if (localStorage.authorized_user !== "false") {
+        if (props.authorized) {
             return (
                     <li>
                         <img src="https://i.imgur.com/jeUvrsa.png" alt=""/>

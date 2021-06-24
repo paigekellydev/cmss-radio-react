@@ -4,6 +4,7 @@ body {
 	font-family: 'Poppins', sans-serif;
 	color: #d4d4d4;
 	background: linear-gradient(black, red);
+	height: 100vh;
 	/* background: rgb(0,0,0); */
 	/* background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(253,29,29,1) 50%, rgba(0,0,0,1) 100%); */
 	/* height: 100%; */
@@ -14,7 +15,7 @@ body {
 }
 
 html {
-	/* height: 100%; */
+	height: 100%;
 	cursor: pointer;
 	color: #d4d4d4;
 }
@@ -23,9 +24,9 @@ div section.song-list {
 	overflow: scroll;
 	cursor: pointer;
 	position: relative;
-	width: 20%;
-	min-width: 12rem;
-	height: 75vh;
+	/* width: 20%; */
+	min-width: 20rem;
+	min-height: 60vh;
 	/* color: rgb(233, 87, 87); */
 }
 
@@ -179,16 +180,19 @@ input[type=checkbox] {
 	justify-content: start;
 	flex-wrap: wrap;
 	/* padding: 16rem; */
-	margin: 20rem;
-	margin-top: 2rem;
+	/* margin: 20rem; */
+	/* margin-left: 20rem; */
+	/* padding-right: 10rem; */
+	/* padding-left: 10rem; */
+	margin: auto;
 	margin-bottom: 2rem;
-	padding-top: 2rem;
+	width: 70%;
 }
 .genre-menu, .users-menu {
 	box-shadow: 2px 20px 100px black;
 }
 .genre-menu h3, .users-menu h3 {
-	margin-left: 50%;
+	margin-left: 43%;
 	color: #d4d4d4;
 }
 
@@ -220,13 +224,18 @@ input[type=checkbox] {
 }
 
 h3, h5 {
-	padding-top: 4rem ;
+	padding-top: 2rem !important;
 	padding-bottom: 2rem ;
-
 }
 
 h5 {
 	padding-left: 1.5rem;
+}
+
+.table {
+	/* width: 70% !important; */
+	/* margin: auto; */
+	/* margin-bottom: 12rem; */
 }
 
 header span p {
@@ -348,15 +357,16 @@ span {
 	margin-bottom: 0;
 	padding-right:10px;
 	padding-bottom:20px;
-	width: 60%;
+	height: 70vh;
+	min-width: 20rem;
 	overflow: scroll;
 	font-size: 18px;
 }
 
-.song-list h5 {
+/* .song-list h5 {
 	margin-top: 0.2rem;
-  margin-left: 0.3rem;
-}
+  	margin-left: 0.3rem;
+} */
 
 .action .menu ul li{
 	list-style: none;
