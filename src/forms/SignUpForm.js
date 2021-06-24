@@ -63,14 +63,14 @@ export default function SignUpForm(props) {
                     onChange={e => setPassword(e.target.value)} 
                 />
                 <label name="email_list">
-                    Receive email updates from CMSS
-                    <input
+                    Receive email updates from CMSS?
+                </label>
+                <input
                         name="email_list"
                         type="checkbox"
                         checked={emailList}
                         onChange={handleInputChange}
-                    />
-                </label>
+                />
                 <input type="submit" value="Sign Up"/>
                 <p>
                     Have an account?
