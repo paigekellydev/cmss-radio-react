@@ -247,7 +247,7 @@ input[type="checkbox"]
     vertical-align: middle !important;
 }
 
-label, input{
+label {
 	color: #d4d4d4 !important;
     display: inline-block ;
     vertical-align: middle;
