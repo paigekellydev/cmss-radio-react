@@ -27,9 +27,9 @@ export default class Song extends Component  {
       }
     }
 
-    handleClick = () => {
-      document.getElementById('audio').src = this.state.currentPlayList.songs[0].songUrl
-    }
+  handleClick = () => {
+    document.getElementById('audio').src = this.state.currentPlayList.songs[0].songUrl
+  }
 
   render() {
         return (
