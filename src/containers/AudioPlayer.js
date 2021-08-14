@@ -49,47 +49,15 @@ export default function SongList(props) {
 
         }
     }
-    // const handlePauseButton = (event, songUrl) => {
-    //     const myAudio = document.getElementById("audio");
-    //     if (!myAudio.paused || songUrl === song ) {
-    //         myAudio.pause()
-    //         setIsPaused(true)
-    //         event.target.src="https://i.imgur.com/3iuXw3H.png"
-    //     } else if (myAudio.duration > 0 && myAudio.paused || songUrl === song) {
-    //         setIsPaused(false)
-    //         document.getElementById("audio").play()
-    //         event.target.src="https://i.imgur.com/CeQBhBy.png"
-    //     }
-    // }
-
+    
     const handleFavClick = (event, songInfo) => {
         event.stopPropagation()
         if (event.target.src === "https://i.imgur.com/2GlG8J6.png") {
             event.target.src = "https://i.imgur.com/kRCB5ua.png"
-            console.log(songInfo)
         } else if (event.target.src === "https://i.imgur.com/kRCB5ua.png") {
             event.target.src = "https://i.imgur.com/2GlG8J6.png"
         }
     }
-
-    // const favImg = () => {
-    //     if (!displayFav) {
-    //         return (
-    //             <img 
-    //                 src="https://i.imgur.com/2GlG8J6.png" 
-    //                 alt="select as favorite"
-    //                 onClick={e => {
-    //                     e.target.src="https://i.imgur.com/kRCB5ua.png"} }
-    //             />)
-    //     } else {
-    //         return (
-    //             <img 
-    //                 src="https://i.imgur.com/kRCB5ua.png" 
-    //                 alt="deselect favorite"
-    //                 onClick={e => setDisplayFav(false)}
-    //             />)
-    //     }
-    // }
 
     const displaySongs = () => {
         // const songArray = []
